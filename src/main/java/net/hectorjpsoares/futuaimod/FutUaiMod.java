@@ -53,6 +53,7 @@ public class FutUaiMod
     {
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
             event.accept(ModItems.CRACKLING_PORK);
+            event.accept(ModItems.PORK_SKIN);
         }
     }
 

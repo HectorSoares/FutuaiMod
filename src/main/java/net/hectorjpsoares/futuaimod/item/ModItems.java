@@ -14,6 +14,9 @@ public class ModItems {
     public static final RegistryObject<Item> CRACKLING_PORK = ITEMS.register("crackling_pork",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> PORK_SKIN = ITEMS.register("pork_skin",
+            () -> new Item(new Item.Properties()));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
