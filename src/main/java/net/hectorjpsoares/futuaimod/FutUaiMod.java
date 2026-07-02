@@ -58,6 +58,7 @@ public class FutUaiMod
             event.accept(ModItems.PORK_SKIN);
             event.accept(ModItems.COLD_BEER);
             event.accept(ModItems.BLACK_PEARL_JAM_DISC);
+            event.accept(ModItems.PORTO_FARIA);
         }
     }
 

@@ -16,6 +16,9 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, FutUaiMod.MOD_ID);
 
+    public static final RegistryObject<Item> PORTO_FARIA = ITEMS.register("porto_faria",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> CRACKLING_PORK = ITEMS.register("crackling_pork",
             () -> new Item(new Item.Properties()
                     .food(new FoodProperties.Builder()

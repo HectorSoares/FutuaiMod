@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-      "layer0": "futuaimod:item/pork_skin"
+      "layer0": "futuaimod:item/porto_faria"
   }
 }
 
