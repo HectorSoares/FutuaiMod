@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " W ",
+    " B ",
+    " I "
+  ],
+  "key": {
+    "W": { "item": "minecraft:wheat" },
+    "B": {
+      "type": "minecraft:item_nbt",
+      "item": "minecraft:potion",
+      "nbt": "{Potion:\"minecraft:water\"}"
+    },
+    "I": { "item": "minecraft:ice" }
+  },
+  "result": {
+    "id": "futuaimod:cold_beer",
+    "count": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "futuaimod:pork_skin"
+  },
+  "result": {
+    "id": "futuaimod:crackling_pork",
+    "count": 1
+  },
+  "experience": 0.35,
+  "cookingtime": 200
+}

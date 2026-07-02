@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "minecraft:wheat" },
+    { "item": "minecraft:ice" }
+  ],
+  "result": {
+    "id": "futuaimod:cold_beer",
+    "count": 1
+  }
+}

@@ -2,6 +2,7 @@ package net.hectorjpsoares.futuaimod;
 
 import com.mojang.logging.LogUtils;
 import net.hectorjpsoares.futuaimod.item.ModItems;
+import net.hectorjpsoares.futuaimod.sound.ModSounds;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -35,6 +36,7 @@ public class FutUaiMod
         MinecraftForge.EVENT_BUS.register(this);
 
         ModItems.register(modEventBus);
+        ModSounds.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -54,6 +56,8 @@ public class FutUaiMod
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
             event.accept(ModItems.CRACKLING_PORK);
             event.accept(ModItems.PORK_SKIN);
+            event.accept(ModItems.COLD_BEER);
+            event.accept(ModItems.BLACK_PEARL_JAM_DISC);
         }
     }
 

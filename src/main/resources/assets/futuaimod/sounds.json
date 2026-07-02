@@ -1,0 +1,10 @@
+{
+  "black_pearl_jam": {
+    "sounds": [
+      {
+        "name": "futuaimod:black_pearl_jam",
+        "stream": true
+      }
+    ]
+  }
+}
