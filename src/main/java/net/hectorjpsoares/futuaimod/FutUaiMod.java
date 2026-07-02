@@ -1,4 +1,4 @@
-package net.hectorjpssoares.futuaimod;
+package net.hectorjpsoares.futuaimod;
 
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.api.distmarker.Dist;
