@@ -1,11 +1,15 @@
 package net.hectorjpsoares.futuaimod.item;
 
 import net.hectorjpsoares.futuaimod.FutUaiMod;
+import net.hectorjpsoares.futuaimod.entity.ModEntities;
 import net.hectorjpsoares.futuaimod.item.custom.ColdBeerItem;
 import net.hectorjpsoares.futuaimod.sound.ModSounds;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.UseAnim;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -44,6 +48,11 @@ public class ModItems {
 
     public static final RegistryObject<Item> BLACK_PEARL_JAM_DISC = ITEMS.register("black_pearl_jam_disc",
             () -> new Item( new Item.Properties().jukeboxPlayable(ModSounds.BLACK_PEARL_JAM_KEY).stacksTo(1)));
+
+    // Use o ForgeSpawnEggItem, não o SpawnEggItem padrão.
+    // Assim você passa a referência direto, sem o .get() e sem erros de cast.
+    public static final RegistryObject<Item> POMBO_SPAWN_EGG = ITEMS.register("pombo_spawn_egg",
+            () -> new net.minecraftforge.common.ForgeSpawnEggItem(ModEntities.POMBO_MOB, 0xFF0000, 0x00FF00, new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

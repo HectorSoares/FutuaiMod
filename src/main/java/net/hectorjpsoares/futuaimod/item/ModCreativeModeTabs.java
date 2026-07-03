@@ -1,0 +1,31 @@
+package net.hectorjpsoares.futuaimod.item;
+
+import net.hectorjpsoares.futuaimod.FutUaiMod;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
+
+public class ModCreativeModeTabs {
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, FutUaiMod.MOD_ID);
+
+    public static final RegistryObject<CreativeModeTab> FUTUAI_TAB = CREATIVE_MODE_TABS.register("futuai_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.CRACKLING_PORK.get()))
+                    .title(Component.translatable("creativetab.futuaimod.futuai_tab"))
+                    .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(ModItems.CRACKLING_PORK.get());
+                        output.accept(ModItems.PORK_SKIN.get());
+                        output.accept(ModItems.COLD_BEER.get());
+                        output.accept(ModItems.BLACK_PEARL_JAM_DISC.get());
+                        output.accept(ModItems.PORTO_FARIA.get());
+                        output.accept(ModItems.POMBO_SPAWN_EGG.get());
+                    }).build());
+
+    public static void register(IEventBus eventBus) {
+        CREATIVE_MODE_TABS.register(eventBus);
+    }
+}

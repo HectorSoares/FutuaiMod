@@ -1,12 +1,22 @@
 package net.hectorjpsoares.futuaimod;
 
 import com.mojang.logging.LogUtils;
+import net.hectorjpsoares.futuaimod.entity.ModEntities;
+import net.hectorjpsoares.futuaimod.entity.client.PomboRenderer;
+import net.hectorjpsoares.futuaimod.entity.custom.PomboEntity;
+import net.hectorjpsoares.futuaimod.item.ModCreativeModeTabs;
 import net.hectorjpsoares.futuaimod.item.ModItems;
 import net.hectorjpsoares.futuaimod.sound.ModSounds;
+import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -35,8 +45,11 @@ public class FutUaiMod
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
+        ModEntities.register(modEventBus);
+
         ModItems.register(modEventBus);
         ModSounds.register(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -44,10 +57,8 @@ public class FutUaiMod
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
-
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-
     }
 
     // Add the example block item to the building blocks tab
@@ -74,9 +85,19 @@ public class FutUaiMod
     public static class ClientModEvents
     {
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
+        public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event)
         {
+            // O uso do get() aqui pode falhar se a entidade não estiver registrada.
+            // O Forge garante que, neste evento, as entidades já foram processadas.
+            event.registerEntityRenderer(ModEntities.POMBO_MOB.get(), PomboRenderer::new);
+        }
+    }
 
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class ModEventBusEvents {
+        @SubscribeEvent
+        public static void registerAttributes(EntityAttributeCreationEvent event) {
+           event.put(ModEntities.POMBO_MOB.get(), PomboEntity.createAttributes().build());
         }
     }
 }
