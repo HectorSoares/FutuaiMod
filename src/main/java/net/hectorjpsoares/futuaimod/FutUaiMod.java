@@ -4,7 +4,9 @@ import com.mojang.logging.LogUtils;
 import net.hectorjpsoares.futuaimod.entity.ModEntities;
 import net.hectorjpsoares.futuaimod.entity.client.PiteraRenderer;
 import net.hectorjpsoares.futuaimod.entity.client.PomboRenderer;
+import net.hectorjpsoares.futuaimod.entity.client.YuriRenderer;
 import net.hectorjpsoares.futuaimod.entity.custom.PomboEntity;
+import net.hectorjpsoares.futuaimod.entity.custom.YuriEntity;
 import net.hectorjpsoares.futuaimod.item.ModCreativeModeTabs;
 import net.hectorjpsoares.futuaimod.item.ModItems;
 import net.hectorjpsoares.futuaimod.sound.ModSounds;
@@ -90,6 +92,7 @@ public class FutUaiMod
             // O Forge garante que, neste evento, as entidades já foram processadas.
             event.registerEntityRenderer(ModEntities.POMBO_MOB.get(), PomboRenderer::new);
             event.registerEntityRenderer(ModEntities.PITERA_MOB.get(), PiteraRenderer::new);
+            event.registerEntityRenderer(ModEntities.YURI_MOB.get(), YuriRenderer::new);
         }
     }
 
@@ -99,6 +102,7 @@ public class FutUaiMod
         public static void registerAttributes(EntityAttributeCreationEvent event) {
            event.put(ModEntities.POMBO_MOB.get(), PomboEntity.createAttributes().build());
             event.put(ModEntities.PITERA_MOB.get(), PomboEntity.createAttributes().build());
+            event.put(ModEntities.YURI_MOB.get(), YuriEntity.createAttributes().build());
         }
 
         @SubscribeEvent

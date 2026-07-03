@@ -3,6 +3,7 @@ package net.hectorjpsoares.futuaimod.entity;
 import net.hectorjpsoares.futuaimod.FutUaiMod;
 import net.hectorjpsoares.futuaimod.entity.custom.PiteraEntity;
 import net.hectorjpsoares.futuaimod.entity.custom.PomboEntity;
+import net.hectorjpsoares.futuaimod.entity.custom.YuriEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -25,6 +26,11 @@ public class ModEntities {
             ENTITIES.register("pitera_mob", () -> EntityType.Builder.of(PiteraEntity::new, MobCategory.MONSTER)
                     .sized(0.5f, 0.9f)
                     .build("pitera_mob"));
+
+    public static final RegistryObject<EntityType<YuriEntity>> YURI_MOB =
+            ENTITIES.register("yuri_mob", () -> EntityType.Builder.of(YuriEntity::new, MobCategory.MONSTER)
+                    .sized(0.9f, 2.9f)
+                    .build("yuri_mob"));
 
     // 3. Método de registro que o FutUaiMod chama
     public static void register(IEventBus eventBus) {

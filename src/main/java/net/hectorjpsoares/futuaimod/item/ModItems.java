@@ -54,10 +54,13 @@ public class ModItems {
     // *****
 
     public static final RegistryObject<Item> POMBO_SPAWN_EGG = ITEMS.register("pombo_spawn_egg",
-            () -> new net.minecraftforge.common.ForgeSpawnEggItem(ModEntities.POMBO_MOB, 0xFF0000, 0x00FF00, new Item.Properties()));
+            () -> new net.minecraftforge.common.ForgeSpawnEggItem(ModEntities.POMBO_MOB, 0xD9D9D9, 0x3B7A57, new Item.Properties()));
 
     public static final RegistryObject<Item> PITERA_SPAWN_EGG = ITEMS.register("pitera_spawn_egg",
-            () -> new net.minecraftforge.common.ForgeSpawnEggItem(ModEntities.PITERA_MOB, 0xFF0000, 0x00FF00, new Item.Properties()));
+            () -> new net.minecraftforge.common.ForgeSpawnEggItem(ModEntities.PITERA_MOB, 0x3B214F, 0xC26BFF, new Item.Properties()));
+
+    public static final RegistryObject<Item> YURI_SPAWN_EGG = ITEMS.register("yuri_spawn_egg",
+            () -> new net.minecraftforge.common.ForgeSpawnEggItem(ModEntities.YURI_MOB, 0x0B3D3E, 0x20E0B2, new Item.Properties()));
 
 
     public static void register(IEventBus eventBus) {
