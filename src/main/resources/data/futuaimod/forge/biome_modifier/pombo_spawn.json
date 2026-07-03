@@ -1,0 +1,15 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:plains",
+    "minecraft:meadow",
+    "minecraft:savanna",
+    "minecraft:taiga"
+  ],
+  "spawners": {
+    "type": "futuaimod:pombo_mob",
+    "weight": 80,
+    "minCount": 3,
+    "maxCount": 6
+  }
+}

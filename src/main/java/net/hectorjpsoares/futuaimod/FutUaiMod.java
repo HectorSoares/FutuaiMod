@@ -2,15 +2,15 @@ package net.hectorjpsoares.futuaimod;
 
 import com.mojang.logging.LogUtils;
 import net.hectorjpsoares.futuaimod.entity.ModEntities;
+import net.hectorjpsoares.futuaimod.entity.client.PiteraRenderer;
 import net.hectorjpsoares.futuaimod.entity.client.PomboRenderer;
 import net.hectorjpsoares.futuaimod.entity.custom.PomboEntity;
 import net.hectorjpsoares.futuaimod.item.ModCreativeModeTabs;
 import net.hectorjpsoares.futuaimod.item.ModItems;
 import net.hectorjpsoares.futuaimod.sound.ModSounds;
-import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -23,7 +23,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
@@ -90,6 +89,7 @@ public class FutUaiMod
             // O uso do get() aqui pode falhar se a entidade não estiver registrada.
             // O Forge garante que, neste evento, as entidades já foram processadas.
             event.registerEntityRenderer(ModEntities.POMBO_MOB.get(), PomboRenderer::new);
+            event.registerEntityRenderer(ModEntities.PITERA_MOB.get(), PiteraRenderer::new);
         }
     }
 
@@ -98,6 +98,18 @@ public class FutUaiMod
         @SubscribeEvent
         public static void registerAttributes(EntityAttributeCreationEvent event) {
            event.put(ModEntities.POMBO_MOB.get(), PomboEntity.createAttributes().build());
+            event.put(ModEntities.PITERA_MOB.get(), PomboEntity.createAttributes().build());
+        }
+
+        @SubscribeEvent
+        public static void registerSpawnPlacements(net.minecraftforge.event.entity.SpawnPlacementRegisterEvent event) {
+            event.register(
+                    ModEntities.POMBO_MOB.get(),
+                    SpawnPlacementTypes.ON_GROUND, // Nasce no chão (não no ar)
+                    Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, // Pega o bloco mais alto que não seja folha
+                    Animal::checkAnimalSpawnRules, // Usa a regra padrão de animais (luz do dia e bloco de grama)
+                    net.minecraftforge.event.entity.SpawnPlacementRegisterEvent.Operation.REPLACE
+            );
         }
     }
 }

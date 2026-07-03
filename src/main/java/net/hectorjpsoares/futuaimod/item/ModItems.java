@@ -49,10 +49,16 @@ public class ModItems {
     public static final RegistryObject<Item> BLACK_PEARL_JAM_DISC = ITEMS.register("black_pearl_jam_disc",
             () -> new Item( new Item.Properties().jukeboxPlayable(ModSounds.BLACK_PEARL_JAM_KEY).stacksTo(1)));
 
-    // Use o ForgeSpawnEggItem, não o SpawnEggItem padrão.
-    // Assim você passa a referência direto, sem o .get() e sem erros de cast.
+    // *****
+    // EGGS
+    // *****
+
     public static final RegistryObject<Item> POMBO_SPAWN_EGG = ITEMS.register("pombo_spawn_egg",
             () -> new net.minecraftforge.common.ForgeSpawnEggItem(ModEntities.POMBO_MOB, 0xFF0000, 0x00FF00, new Item.Properties()));
+
+    public static final RegistryObject<Item> PITERA_SPAWN_EGG = ITEMS.register("pitera_spawn_egg",
+            () -> new net.minecraftforge.common.ForgeSpawnEggItem(ModEntities.PITERA_MOB, 0xFF0000, 0x00FF00, new Item.Properties()));
+
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
