@@ -3,10 +3,12 @@ package net.hectorjpsoares.futuaimod;
 import com.mojang.logging.LogUtils;
 import net.hectorjpsoares.futuaimod.entity.ModEntities;
 import net.hectorjpsoares.futuaimod.entity.client.FredRenderer;
+import net.hectorjpsoares.futuaimod.entity.client.FroisRenderer;
 import net.hectorjpsoares.futuaimod.entity.client.PiteraRenderer;
 import net.hectorjpsoares.futuaimod.entity.client.PomboRenderer;
 import net.hectorjpsoares.futuaimod.entity.client.YuriRenderer;
 import net.hectorjpsoares.futuaimod.entity.custom.FredEntity;
+import net.hectorjpsoares.futuaimod.entity.custom.FroisEntity;
 import net.hectorjpsoares.futuaimod.entity.custom.PomboEntity;
 import net.hectorjpsoares.futuaimod.entity.custom.YuriEntity;
 import net.hectorjpsoares.futuaimod.item.ModCreativeModeTabs;
@@ -96,6 +98,7 @@ public class FutUaiMod
             event.registerEntityRenderer(ModEntities.PITERA_MOB.get(), PiteraRenderer::new);
             event.registerEntityRenderer(ModEntities.YURI_MOB.get(), YuriRenderer::new);
             event.registerEntityRenderer(ModEntities.FRED_MOB.get(), FredRenderer::new);
+            event.registerEntityRenderer(ModEntities.FROIS_MOB.get(), FroisRenderer::new);
         }
     }
 
@@ -107,6 +110,7 @@ public class FutUaiMod
             event.put(ModEntities.PITERA_MOB.get(), PomboEntity.createAttributes().build());
             event.put(ModEntities.YURI_MOB.get(), YuriEntity.createAttributes().build());
             event.put(ModEntities.FRED_MOB.get(), FredEntity.createAttributes().build());
+            event.put(ModEntities.FROIS_MOB.get(), FroisEntity.createAttributes().build());
         }
 
         @SubscribeEvent

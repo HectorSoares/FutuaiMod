@@ -2,6 +2,7 @@ package net.hectorjpsoares.futuaimod.entity;
 
 import net.hectorjpsoares.futuaimod.FutUaiMod;
 import net.hectorjpsoares.futuaimod.entity.custom.FredEntity;
+import net.hectorjpsoares.futuaimod.entity.custom.FroisEntity;
 import net.hectorjpsoares.futuaimod.entity.custom.PiteraEntity;
 import net.hectorjpsoares.futuaimod.entity.custom.PomboEntity;
 import net.hectorjpsoares.futuaimod.entity.custom.YuriEntity;
@@ -37,6 +38,11 @@ public class ModEntities {
             ENTITIES.register("fred_mob", () -> EntityType.Builder.of(FredEntity::new, MobCategory.MONSTER)
                     .sized(0.6f, 2.9f)
                     .build("fred_mob"));
+
+    public static final RegistryObject<EntityType<FroisEntity>> FROIS_MOB =
+            ENTITIES.register("frois_mob", () -> EntityType.Builder.of(FroisEntity::new, MobCategory.MONSTER)
+                    .sized(0.6f, 1.95f)
+                    .build("frois_mob"));
 
     // 3. Método de registro que o FutUaiMod chama
     public static void register(IEventBus eventBus) {

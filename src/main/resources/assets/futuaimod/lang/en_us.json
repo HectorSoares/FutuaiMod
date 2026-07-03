@@ -7,5 +7,17 @@
   "item.futuaimod.black_pearl_jam_disc": "Disco de Musica",
   "item.futuaimod.black_pearl_jam_music_disc.desc": "Pearl Jam - Black",
 
+  "entity.futuaimod.pombo_mob": "Pombo",
+  "entity.futuaimod.pitera_mob": "Pitera",
+  "entity.futuaimod.yuri_mob": "Yuri",
+  "entity.futuaimod.fred_mob": "Fred",
+  "entity.futuaimod.frois_mob": "Frois",
+
+  "item.futuaimod.pombo_spawn_egg": "Pombo Spawn Egg",
+  "item.futuaimod.pitera_spawn_egg": "Pitera Spawn Egg",
+  "item.futuaimod.yuri_spawn_egg": "Yuri Spawn Egg",
+  "item.futuaimod.fred_spawn_egg": "Fred Spawn Egg",
+  "item.futuaimod.frois_spawn_egg": "Frois Spawn Egg",
+
   "creativetab.futuaimod.futuai_tab": "Itens do FutUaiMod"
 }

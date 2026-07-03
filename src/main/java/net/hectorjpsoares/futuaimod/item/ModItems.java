@@ -65,6 +65,9 @@ public class ModItems {
     public static final RegistryObject<Item> FRED_SPAWN_EGG = ITEMS.register("fred_spawn_egg",
             () -> new net.minecraftforge.common.ForgeSpawnEggItem(ModEntities.FRED_MOB, 0x16111F, 0xB04DFF, new Item.Properties()));
 
+    public static final RegistryObject<Item> FROIS_SPAWN_EGG = ITEMS.register("frois_spawn_egg",
+            () -> new net.minecraftforge.common.ForgeSpawnEggItem(ModEntities.FROIS_MOB, 0x6E747C, 0x2F4F6F, new Item.Properties()));
+
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
