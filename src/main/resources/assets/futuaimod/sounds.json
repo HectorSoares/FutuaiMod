@@ -20,5 +20,12 @@
         "name": "futuaimod:pigeon_sound"
       }
     ]
+  },
+  "fred_sound": {
+    "sounds": [
+      {
+        "name": "futuaimod:fred_sound"
+      }
+    ]
   }
 }

@@ -1,5 +1,7 @@
 package net.hectorjpsoares.futuaimod.entity.custom;
 
+import net.hectorjpsoares.futuaimod.sound.ModSounds;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.monster.EnderMan;
@@ -12,5 +14,10 @@ public class FredEntity extends EnderMan {
 
     public static AttributeSupplier.Builder createAttributes() {
         return EnderMan.createAttributes();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return ModSounds.FRED_SOUND.get();
     }
 }
