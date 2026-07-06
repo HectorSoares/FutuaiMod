@@ -6,5 +6,19 @@
         "stream": true
       }
     ]
+  },
+  "snoring_sound": {
+    "sounds": [
+      {
+        "name": "futuaimod:snoring_sound"
+      }
+    ]
+  },
+  "pigeon_sound": {
+    "sounds": [
+      {
+        "name": "futuaimod:pigeon_sound"
+      }
+    ]
   }
 }

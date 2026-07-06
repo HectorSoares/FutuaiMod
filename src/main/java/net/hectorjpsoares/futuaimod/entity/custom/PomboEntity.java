@@ -1,5 +1,7 @@
 package net.hectorjpsoares.futuaimod.entity.custom;
 
+import net.hectorjpsoares.futuaimod.sound.ModSounds;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -15,5 +17,10 @@ public class PomboEntity extends Parrot {
         return Parrot.createAttributes()
                 .add(Attributes.MAX_HEALTH, 6.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.25);
-   }
+    }
+
+    @Override
+    public SoundEvent getAmbientSound() {
+        return ModSounds.PIGEON_SOUND.get();
+    }
 }
