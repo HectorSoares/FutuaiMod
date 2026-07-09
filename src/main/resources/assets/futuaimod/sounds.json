@@ -7,24 +7,31 @@
       }
     ]
   },
-  "snoring_sound": {
+  "yuri_ambient_sound": {
     "sounds": [
       {
-        "name": "futuaimod:snoring_sound"
+        "name": "futuaimod:entity/yuri/ambient"
       }
     ]
   },
-  "pigeon_sound": {
+  "pombo_ambient_sound": {
     "sounds": [
       {
-        "name": "futuaimod:pigeon_sound"
+        "name": "futuaimod:entity/pombo/ambient"
       }
     ]
   },
-  "fred_sound": {
+  "fred_death_sound": {
     "sounds": [
       {
-        "name": "futuaimod:fred_sound"
+        "name": "futuaimod:entity/fred/death"
+      }
+    ]
+  },
+  "fred_hurt_sound": {
+    "sounds": [
+      {
+        "name": "futuaimod:entity/fred/hurt"
       }
     ]
   }

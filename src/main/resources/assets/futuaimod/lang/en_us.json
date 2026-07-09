@@ -12,12 +12,22 @@
   "entity.futuaimod.yuri_mob": "Yuri",
   "entity.futuaimod.fred_mob": "Fred",
   "entity.futuaimod.frois_mob": "Frois",
+  "entity.futuaimod.hector_mob": "Hector",
+  "entity.futuaimod.marques_mob": "Marques",
+  "entity.futuaimod.zepedro_mob": "Ze Pedro",
+  "entity.futuaimod.joao_mob": "Joao",
+  "entity.futuaimod.jamal_mob": "Jamal",
 
   "item.futuaimod.pombo_spawn_egg": "Pombo Spawn Egg",
   "item.futuaimod.pitera_spawn_egg": "Pitera Spawn Egg",
   "item.futuaimod.yuri_spawn_egg": "Yuri Spawn Egg",
   "item.futuaimod.fred_spawn_egg": "Fred Spawn Egg",
   "item.futuaimod.frois_spawn_egg": "Frois Spawn Egg",
+  "item.futuaimod.hector_spawn_egg": "Hector Spawn Egg",
+  "item.futuaimod.marques_spawn_egg": "Marques Spawn Egg",
+  "item.futuaimod.ze_pedro_spawn_egg": "Ze Pedro Spawn Egg",
+  "item.futuaimod.joao_spawn_egg": "Joao Spawn Egg",
+  "item.futuaimod.jamal_spawn_egg": "Jamal Spawn Egg",
 
   "creativetab.futuaimod.futuai_tab": "Itens do FutUaiMod"
 }
