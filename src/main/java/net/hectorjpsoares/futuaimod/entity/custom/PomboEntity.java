@@ -21,6 +21,6 @@ public class PomboEntity extends Parrot {
 
     @Override
     public SoundEvent getAmbientSound() {
-        return ModSounds.PIGEON_SOUND.get();
+        return ModSounds.POMBO_AMBIENT_SOUND.get();
     }
 }

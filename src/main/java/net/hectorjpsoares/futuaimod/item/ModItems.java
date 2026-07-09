@@ -11,6 +11,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.UseAnim;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -53,23 +54,50 @@ public class ModItems {
     // EGGS
     // *****
 
-    public static final RegistryObject<Item> POMBO_SPAWN_EGG = ITEMS.register("pombo_spawn_egg",
-            () -> new net.minecraftforge.common.ForgeSpawnEggItem(ModEntities.POMBO_MOB, 0xD9D9D9, 0x3B7A57, new Item.Properties()));
+    public static final RegistryObject<Item> POMBO_SPAWN_EGG =
+        registerSpawnEgg("pombo_spawn_egg", ModEntities.POMBO_MOB, 0xD9D9D9, 0x3B7A57);
 
-    public static final RegistryObject<Item> PITERA_SPAWN_EGG = ITEMS.register("pitera_spawn_egg",
-            () -> new net.minecraftforge.common.ForgeSpawnEggItem(ModEntities.PITERA_MOB, 0x3B214F, 0xC26BFF, new Item.Properties()));
+    public static final RegistryObject<Item> PITERA_SPAWN_EGG =
+        registerSpawnEgg("pitera_spawn_egg", ModEntities.PITERA_MOB, 0x3B214F, 0xC26BFF);
 
-    public static final RegistryObject<Item> YURI_SPAWN_EGG = ITEMS.register("yuri_spawn_egg",
-            () -> new net.minecraftforge.common.ForgeSpawnEggItem(ModEntities.YURI_MOB, 0x0B3D3E, 0x20E0B2, new Item.Properties()));
+    public static final RegistryObject<Item> YURI_SPAWN_EGG =
+        registerSpawnEgg("yuri_spawn_egg", ModEntities.YURI_MOB, 0x0B3D3E, 0x20E0B2);
 
-    public static final RegistryObject<Item> FRED_SPAWN_EGG = ITEMS.register("fred_spawn_egg",
-            () -> new net.minecraftforge.common.ForgeSpawnEggItem(ModEntities.FRED_MOB, 0x16111F, 0xB04DFF, new Item.Properties()));
+    public static final RegistryObject<Item> FRED_SPAWN_EGG =
+        registerSpawnEgg("fred_spawn_egg", ModEntities.FRED_MOB, 0x16111F, 0xB04DFF);
 
-    public static final RegistryObject<Item> FROIS_SPAWN_EGG = ITEMS.register("frois_spawn_egg",
-            () -> new net.minecraftforge.common.ForgeSpawnEggItem(ModEntities.FROIS_MOB, 0x6E747C, 0x2F4F6F, new Item.Properties()));
+    public static final RegistryObject<Item> FROIS_SPAWN_EGG =
+        registerSpawnEgg("frois_spawn_egg", ModEntities.FROIS_MOB, 0x6E747C, 0x2F4F6F);
+
+    public static final RegistryObject<Item> HECTOR_SPAWN_EGG =
+        registerSpawnEgg("hector_spawn_egg", ModEntities.HECTOR_MOB, 0x2E86DE, 0xF8F9FA);
+
+    public static final RegistryObject<Item> MARQUES_SPAWN_EGG =
+        registerSpawnEgg("marques_spawn_egg", ModEntities.MARQUES_MOB, 0x8E6B3A, 0x00C853);
+
+    public static final RegistryObject<Item> ZE_PEDRO_SPAWN_EGG =
+        registerSpawnEgg("ze_pedro_spawn_egg", ModEntities.ZE_PEDRO_MOB, 0x7B5E57, 0xFFD54F);
+
+    public static final RegistryObject<Item> JOAO_SPAWN_EGG =
+        registerSpawnEgg("joao_spawn_egg", ModEntities.JOAO_MOB, 0xC62828, 0xFFEB3B);
+
+    public static final RegistryObject<Item> JAMAL_SPAWN_EGG =
+        registerSpawnEgg("jamal_spawn_egg", ModEntities.JAMAL_MOB, 0x263238, 0x90CAF9);
+
+        
 
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
+
+    private static <T extends Mob> RegistryObject<Item> registerSpawnEgg(
+        String name,
+        RegistryObject<EntityType<T>> entity,
+        int primaryColor,
+        int secondaryColor) {
+
+    return ITEMS.register(name,
+            () -> new ForgeSpawnEggItem(entity, primaryColor, secondaryColor, new Item.Properties()));
+}
 }

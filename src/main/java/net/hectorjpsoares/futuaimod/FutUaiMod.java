@@ -4,13 +4,24 @@ import com.mojang.logging.LogUtils;
 import net.hectorjpsoares.futuaimod.entity.ModEntities;
 import net.hectorjpsoares.futuaimod.entity.client.FredRenderer;
 import net.hectorjpsoares.futuaimod.entity.client.FroisRenderer;
+import net.hectorjpsoares.futuaimod.entity.client.HectorRenderer;
+import net.hectorjpsoares.futuaimod.entity.client.JamalRenderer;
+import net.hectorjpsoares.futuaimod.entity.client.JoaoRenderer;
+import net.hectorjpsoares.futuaimod.entity.client.MarquesRenderer;
 import net.hectorjpsoares.futuaimod.entity.client.PiteraRenderer;
 import net.hectorjpsoares.futuaimod.entity.client.PomboRenderer;
 import net.hectorjpsoares.futuaimod.entity.client.YuriRenderer;
+import net.hectorjpsoares.futuaimod.entity.client.ZePedroRenderer;
 import net.hectorjpsoares.futuaimod.entity.custom.FredEntity;
 import net.hectorjpsoares.futuaimod.entity.custom.FroisEntity;
+import net.hectorjpsoares.futuaimod.entity.custom.HectorEntity;
+import net.hectorjpsoares.futuaimod.entity.custom.JamalEntity;
+import net.hectorjpsoares.futuaimod.entity.custom.JoaoEntity;
+import net.hectorjpsoares.futuaimod.entity.custom.MarquesEntity;
+import net.hectorjpsoares.futuaimod.entity.custom.PiteraEntity;
 import net.hectorjpsoares.futuaimod.entity.custom.PomboEntity;
 import net.hectorjpsoares.futuaimod.entity.custom.YuriEntity;
+import net.hectorjpsoares.futuaimod.entity.custom.ZePedroEntity;
 import net.hectorjpsoares.futuaimod.item.ModCreativeModeTabs;
 import net.hectorjpsoares.futuaimod.item.ModItems;
 import net.hectorjpsoares.futuaimod.sound.ModSounds;
@@ -99,6 +110,11 @@ public class FutUaiMod
             event.registerEntityRenderer(ModEntities.YURI_MOB.get(), YuriRenderer::new);
             event.registerEntityRenderer(ModEntities.FRED_MOB.get(), FredRenderer::new);
             event.registerEntityRenderer(ModEntities.FROIS_MOB.get(), FroisRenderer::new);
+            event.registerEntityRenderer(ModEntities.HECTOR_MOB.get(), HectorRenderer::new);
+            event.registerEntityRenderer(ModEntities.MARQUES_MOB.get(), MarquesRenderer::new);
+            event.registerEntityRenderer(ModEntities.ZE_PEDRO_MOB.get(), ZePedroRenderer::new);
+            event.registerEntityRenderer(ModEntities.JOAO_MOB.get(), JoaoRenderer::new);
+            event.registerEntityRenderer(ModEntities.JAMAL_MOB.get(), JamalRenderer::new);
         }
     }
 
@@ -106,11 +122,16 @@ public class FutUaiMod
     public static class ModEventBusEvents {
         @SubscribeEvent
         public static void registerAttributes(EntityAttributeCreationEvent event) {
-           event.put(ModEntities.POMBO_MOB.get(), PomboEntity.createAttributes().build());
-            event.put(ModEntities.PITERA_MOB.get(), PomboEntity.createAttributes().build());
+            event.put(ModEntities.POMBO_MOB.get(), PomboEntity.createAttributes().build());
+            event.put(ModEntities.PITERA_MOB.get(), PiteraEntity.createAttributes().build());
             event.put(ModEntities.YURI_MOB.get(), YuriEntity.createAttributes().build());
             event.put(ModEntities.FRED_MOB.get(), FredEntity.createAttributes().build());
             event.put(ModEntities.FROIS_MOB.get(), FroisEntity.createAttributes().build());
+            event.put(ModEntities.HECTOR_MOB.get(), HectorEntity.createAttributes().build());
+            event.put(ModEntities.MARQUES_MOB.get(), MarquesEntity.createAttributes().build());
+            event.put(ModEntities.ZE_PEDRO_MOB.get(), ZePedroEntity.createAttributes().build());
+            event.put(ModEntities.JOAO_MOB.get(), JoaoEntity.createAttributes().build());
+            event.put(ModEntities.JAMAL_MOB.get(), JamalEntity.createAttributes().build());
         }
 
         @SubscribeEvent

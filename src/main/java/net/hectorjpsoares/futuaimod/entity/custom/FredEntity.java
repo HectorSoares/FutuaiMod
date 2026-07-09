@@ -2,6 +2,7 @@ package net.hectorjpsoares.futuaimod.entity.custom;
 
 import net.hectorjpsoares.futuaimod.sound.ModSounds;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.monster.EnderMan;
@@ -18,6 +19,11 @@ public class FredEntity extends EnderMan {
 
     @Override
     protected SoundEvent getDeathSound() {
-        return ModSounds.FRED_SOUND.get();
+        return ModSounds.FRED_DEATH_SOUND.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource p_32527_) {
+        return ModSounds.FRED_HURT_SOUND.get();
     }
 }

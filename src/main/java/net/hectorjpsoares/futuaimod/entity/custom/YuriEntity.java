@@ -22,7 +22,7 @@ public class YuriEntity extends Warden {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return ModSounds.SNORING_SOUND.get();
+        return ModSounds.YURI_AMBIENT_SOUND.get();
     }
 
     @Override

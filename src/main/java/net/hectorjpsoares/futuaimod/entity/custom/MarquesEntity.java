@@ -6,8 +6,8 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.level.Level;
 
-public class PiteraEntity extends Phantom {
-    public PiteraEntity(EntityType<? extends Phantom> entityType, Level level) {
+public class MarquesEntity extends Phantom  {
+    public MarquesEntity(EntityType<? extends Phantom > entityType, Level level) {
         super(entityType, level);
     }
 

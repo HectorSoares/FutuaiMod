@@ -27,6 +27,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.YURI_SPAWN_EGG.get());
                         output.accept(ModItems.FRED_SPAWN_EGG.get());
                         output.accept(ModItems.FROIS_SPAWN_EGG.get());
+                        output.accept(ModItems.HECTOR_SPAWN_EGG.get());
+                        output.accept(ModItems.MARQUES_SPAWN_EGG.get());
+                        output.accept(ModItems.ZE_PEDRO_SPAWN_EGG.get());
+                        output.accept(ModItems.JOAO_SPAWN_EGG.get());
+                        output.accept(ModItems.JAMAL_SPAWN_EGG.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

@@ -17,9 +17,10 @@ public class ModSounds {
 
 
     public static final RegistryObject<SoundEvent> BLACK_PEARL_JAM = registerSoundEvent("black_pearl_jam");
-    public static final RegistryObject<SoundEvent> SNORING_SOUND = registerSoundEvent("snoring_sound");
-    public static final RegistryObject<SoundEvent> PIGEON_SOUND = registerSoundEvent("pigeon_sound");
-    public static final RegistryObject<SoundEvent> FRED_SOUND = registerSoundEvent("fred_sound");
+    public static final RegistryObject<SoundEvent> YURI_AMBIENT_SOUND = registerSoundEvent("yuri_ambient_sound");
+    public static final RegistryObject<SoundEvent> POMBO_AMBIENT_SOUND = registerSoundEvent("pombo_ambient_sound");
+    public static final RegistryObject<SoundEvent> FRED_DEATH_SOUND = registerSoundEvent("fred_death_sound");
+    public static final RegistryObject<SoundEvent> FRED_HURT_SOUND = registerSoundEvent("fred_hurt_sound");
     public static final ResourceKey<JukeboxSong> BLACK_PEARL_JAM_KEY = ResourceKey.create(Registries.JUKEBOX_SONG,
             ResourceLocation.fromNamespaceAndPath(FutUaiMod.MOD_ID, "black_pearl_jam"));
 
