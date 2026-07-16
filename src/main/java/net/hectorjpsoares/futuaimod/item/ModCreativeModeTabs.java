@@ -19,6 +19,7 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.CRACKLING_PORK.get());
                         output.accept(ModItems.PORK_SKIN.get());
+                        output.accept(ModItems.PREXECA_MILTON.get());
                         output.accept(ModItems.COLD_BEER.get());
                         output.accept(ModItems.BLACK_PEARL_JAM_DISC.get());
                         output.accept(ModItems.PORTO_FARIA.get());

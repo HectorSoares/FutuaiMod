@@ -27,7 +27,14 @@ public class ModItems {
     public static final RegistryObject<Item> CRACKLING_PORK = ITEMS.register("crackling_pork",
             () -> new Item(new Item.Properties()
                     .food(new FoodProperties.Builder()
-                            .nutrition(6)          // Quantidade de barras de fome que recupera
+                            .nutrition(2)          // Quantidade de barras de fome que recupera
+                            .saturationModifier(0.6f)   // Modificador de saturação (0.6f é bom para torresmo)
+                            .build())));
+
+    public static final RegistryObject<Item> PREXECA_MILTON = ITEMS.register("prexeca_milton",
+            () -> new Item(new Item.Properties()
+                    .food(new FoodProperties.Builder()
+                            .nutrition(8)          // Quantidade de barras de fome que recupera
                             .saturationModifier(0.6f)   // Modificador de saturação (0.6f é bom para torresmo)
                             .build())));
 

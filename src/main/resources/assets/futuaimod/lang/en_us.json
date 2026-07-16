@@ -3,6 +3,7 @@
   "item.futuaimod.pork_skin": "Pele de porco",
   "item.futuaimod.cold_beer": "Cerveja geladinha",
   "item.futuaimod.porto_faria": "Porto Faria",
+  "item.futuaimod.prexeca_milton": "Prexeca do Milton",
 
   "item.futuaimod.black_pearl_jam_disc": "Disco de Musica",
   "item.futuaimod.black_pearl_jam_music_disc.desc": "Pearl Jam - Black",
@@ -29,5 +30,8 @@
   "item.futuaimod.joao_spawn_egg": "Joao Spawn Egg",
   "item.futuaimod.jamal_spawn_egg": "Jamal Spawn Egg",
 
-  "creativetab.futuaimod.futuai_tab": "Itens do FutUaiMod"
+  "creativetab.futuaimod.futuai_tab": "Itens do FutUaiMod",
+
+  "painting.futuaimod.bar_milton_paint.author": "100ton",
+  "painting.futuaimod.bar_milton_paint.title": "Bar do 100ton"
 }
