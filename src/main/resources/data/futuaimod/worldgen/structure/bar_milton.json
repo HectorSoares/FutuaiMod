@@ -43,10 +43,16 @@
       "bounding_box": "piece",
       "spawns": [
         {
-          "type": "minecraft:parrot",
-          "weight": 1,
+          "type": "futuaimod:marques_mob",
+          "weight": 30,
           "minCount": 1,
-          "maxCount": 4
+          "maxCount": 1
+        },
+        {
+          "type": "minecraft:parrot",
+          "weight": 2,
+          "minCount": 1,
+          "maxCount": 3
         }
       ]
     }
