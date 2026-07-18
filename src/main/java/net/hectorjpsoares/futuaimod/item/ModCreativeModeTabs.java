@@ -23,6 +23,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.COLD_BEER.get());
                         output.accept(ModItems.BLACK_PEARL_JAM_DISC.get());
                         output.accept(ModItems.PORTO_FARIA.get());
+
                         output.accept(ModItems.POMBO_SPAWN_EGG.get());
                         output.accept(ModItems.PITERA_SPAWN_EGG.get());
                         output.accept(ModItems.YURI_SPAWN_EGG.get());
@@ -33,6 +34,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ZE_PEDRO_SPAWN_EGG.get());
                         output.accept(ModItems.JOAO_SPAWN_EGG.get());
                         output.accept(ModItems.JAMAL_SPAWN_EGG.get());
+
+                        output.accept(ModItems.ABADA_HELMET.get());
+                        output.accept(ModItems.ABADA_CHESTPLATE.get());
+                        output.accept(ModItems.ABADA_LEGGINGS.get());
+                        output.accept(ModItems.ABADA_BOOTS.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

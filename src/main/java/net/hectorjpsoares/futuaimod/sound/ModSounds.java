@@ -18,6 +18,8 @@ public class ModSounds {
 
     public static final RegistryObject<SoundEvent> BLACK_PEARL_JAM = registerSoundEvent("black_pearl_jam");
     public static final RegistryObject<SoundEvent> YURI_AMBIENT_SOUND = registerSoundEvent("yuri_ambient_sound");
+    public static final RegistryObject<SoundEvent> YURI_HURT_SOUND = registerSoundEvent("yuri_hurt_sound");
+    public static final RegistryObject<SoundEvent> YURI_DEATH_SOUND = registerSoundEvent("yuri_death_sound");
     public static final RegistryObject<SoundEvent> POMBO_AMBIENT_SOUND = registerSoundEvent("pombo_ambient_sound");
     public static final RegistryObject<SoundEvent> FRED_DEATH_SOUND = registerSoundEvent("fred_death_sound");
     public static final RegistryObject<SoundEvent> FRED_HURT_SOUND = registerSoundEvent("fred_hurt_sound");

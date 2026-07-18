@@ -77,7 +77,7 @@ public class MarquesTrades {
         ));
         offers.add(randomItemTrade(
                 RANDOM_ITEMS,
-                new ItemCost(ModItems.PREXECA_MILTON.get(), 16),
+                new ItemCost(ModItems.PREXECA_MILTON.get(), 2),
                 999999,
                 50,
                 0.2f,
@@ -85,7 +85,7 @@ public class MarquesTrades {
         ));
         offers.add(randomItemTrade(
                 RANDOM_ITEMS,
-                new ItemCost(ModItems.PORTO_FARIA.get(), 16),
+                new ItemCost(ModItems.PORTO_FARIA.get(), 4),
                 5,
                 20,
                 0.1f,
@@ -93,7 +93,7 @@ public class MarquesTrades {
         ));
         offers.add(randomItemTrade(
                 RANDOM_ITEMS,
-                new ItemCost(ModItems.BLACK_PEARL_JAM_DISC.get(), 64),
+                new ItemCost(ModItems.BLACK_PEARL_JAM_DISC.get(), 16),
                 1,
                 50,
                 0.05f,

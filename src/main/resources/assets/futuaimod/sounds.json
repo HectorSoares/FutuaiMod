@@ -7,13 +7,40 @@
       }
     ]
   },
+
   "yuri_ambient_sound": {
     "sounds": [
       {
-        "name": "futuaimod:entity/yuri/ambient"
+        "name": "futuaimod:entity/yuri/tururu",
+        "weight": 6
+      },
+      {
+        "name": "futuaimod:entity/yuri/ambient",
+        "weight": 3
+      },
+      {
+        "name": "futuaimod:entity/yuri/why",
+        "weight": 1
       }
     ]
   },
+
+  "yuri_hurt_sound": {
+    "sounds": [
+      {
+        "name": "futuaimod:entity/yuri/hurt"
+      }
+    ]
+  },
+
+  "yuri_death_sound": {
+    "sounds": [
+      {
+        "name": "futuaimod:entity/yuri/death"
+      }
+    ]
+  },
+
   "pombo_ambient_sound": {
     "sounds": [
       {
@@ -21,6 +48,7 @@
       }
     ]
   },
+
   "fred_death_sound": {
     "sounds": [
       {
@@ -28,6 +56,7 @@
       }
     ]
   },
+
   "fred_hurt_sound": {
     "sounds": [
       {

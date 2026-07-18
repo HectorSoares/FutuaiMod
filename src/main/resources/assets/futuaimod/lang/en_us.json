@@ -4,20 +4,8 @@
   "item.futuaimod.cold_beer": "Cerveja geladinha",
   "item.futuaimod.porto_faria": "Porto Faria",
   "item.futuaimod.prexeca_milton": "Prexeca do Milton",
-
   "item.futuaimod.black_pearl_jam_disc": "Disco de Musica",
   "item.futuaimod.black_pearl_jam_music_disc.desc": "Pearl Jam - Black",
-
-  "entity.futuaimod.pombo_mob": "Pombo",
-  "entity.futuaimod.pitera_mob": "Pitera",
-  "entity.futuaimod.yuri_mob": "Yuri",
-  "entity.futuaimod.fred_mob": "Fred",
-  "entity.futuaimod.frois_mob": "Frois",
-  "entity.futuaimod.hector_mob": "Hector",
-  "entity.futuaimod.marques_mob": "Marques",
-  "entity.futuaimod.zepedro_mob": "Ze Pedro",
-  "entity.futuaimod.joao_mob": "Joao",
-  "entity.futuaimod.jamal_mob": "Jamal",
 
   "item.futuaimod.pombo_spawn_egg": "Pombo Spawn Egg",
   "item.futuaimod.pitera_spawn_egg": "Pitera Spawn Egg",
@@ -29,6 +17,22 @@
   "item.futuaimod.ze_pedro_spawn_egg": "Ze Pedro Spawn Egg",
   "item.futuaimod.joao_spawn_egg": "Joao Spawn Egg",
   "item.futuaimod.jamal_spawn_egg": "Jamal Spawn Egg",
+
+  "item.futuaimod.abada_helmet": "Abada Helmet",
+  "item.futuaimod.abada_chestplate": "Abada Chestplate",
+  "item.futuaimod.abada_leggings": "Abada Leggings",
+  "item.futuaimod.abada_boots": "Abada Boots",
+
+  "entity.futuaimod.pombo_mob": "Pombo",
+  "entity.futuaimod.pitera_mob": "Pitera",
+  "entity.futuaimod.yuri_mob": "Yuri",
+  "entity.futuaimod.fred_mob": "Fred",
+  "entity.futuaimod.frois_mob": "Frois",
+  "entity.futuaimod.hector_mob": "Hector",
+  "entity.futuaimod.marques_mob": "Marques",
+  "entity.futuaimod.zepedro_mob": "Ze Pedro",
+  "entity.futuaimod.joao_mob": "Joao",
+  "entity.futuaimod.jamal_mob": "Jamal",
 
   "creativetab.futuaimod.futuai_tab": "Itens do FutUaiMod",
 

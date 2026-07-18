@@ -7,6 +7,7 @@ import net.hectorjpsoares.futuaimod.sound.ModSounds;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SpawnEggItem;
@@ -56,6 +57,19 @@ public class ModItems {
 
     public static final RegistryObject<Item> BLACK_PEARL_JAM_DISC = ITEMS.register("black_pearl_jam_disc",
             () -> new Item( new Item.Properties().jukeboxPlayable(ModSounds.BLACK_PEARL_JAM_KEY).stacksTo(1)));
+
+    public static final RegistryObject<Item> ABADA_HELMET = ITEMS.register("abada_helmet",
+            () -> new ArmorItem(ModArmorMaterials.ABADA_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(18))));
+    public static final RegistryObject<Item> ABADA_CHESTPLATE = ITEMS.register("abada_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.ABADA_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(18))));
+    public static final RegistryObject<Item> ABADA_LEGGINGS = ITEMS.register("abada_leggings",
+            () -> new ArmorItem(ModArmorMaterials.ABADA_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(18))));
+    public static final RegistryObject<Item> ABADA_BOOTS = ITEMS.register("abada_boots",
+            () -> new ArmorItem(ModArmorMaterials.ABADA_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(18))));
 
     // *****
     // EGGS
