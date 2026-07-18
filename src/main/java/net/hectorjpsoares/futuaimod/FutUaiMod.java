@@ -25,8 +25,10 @@ import net.hectorjpsoares.futuaimod.entity.custom.ZePedroEntity;
 import net.hectorjpsoares.futuaimod.item.ModCreativeModeTabs;
 import net.hectorjpsoares.futuaimod.item.ModItems;
 import net.hectorjpsoares.futuaimod.sound.ModSounds;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
@@ -34,6 +36,7 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -142,8 +145,23 @@ public class FutUaiMod
                     SpawnPlacementTypes.ON_GROUND, // Nasce no chão (não no ar)
                     Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, // Pega o bloco mais alto que não seja folha
                     Animal::checkAnimalSpawnRules, // Usa a regra padrão de animais (luz do dia e bloco de grama)
-                    net.minecraftforge.event.entity.SpawnPlacementRegisterEvent.Operation.REPLACE
+                    SpawnPlacementRegisterEvent.Operation.REPLACE
+            );
+            event.register(
+                    ModEntities.YURI_MOB.get(),
+                    SpawnPlacementTypes.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                    Monster::checkMonsterSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.REPLACE
+            );
+            event.register(
+                    ModEntities.MARQUES_MOB.get(),
+                    SpawnPlacementTypes.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                    Mob::checkMobSpawnRules,
+                    SpawnPlacementRegisterEvent.Operation.REPLACE
             );
         }
+        
     }
 }

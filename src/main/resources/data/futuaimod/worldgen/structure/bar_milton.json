@@ -44,12 +44,12 @@
       "spawns": [
         {
           "type": "futuaimod:marques_mob",
-          "weight": 30,
+          "weight": 60,
           "minCount": 1,
           "maxCount": 1
         },
         {
-          "type": "minecraft:parrot",
+          "type": "futuaimod:frois_mob",
           "weight": 2,
           "minCount": 1,
           "maxCount": 3
