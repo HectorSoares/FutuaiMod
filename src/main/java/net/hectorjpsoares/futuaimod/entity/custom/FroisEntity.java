@@ -17,4 +17,9 @@ public class FroisEntity extends Vindicator {
     public static AttributeSupplier.Builder createAttributes() {
         return Vindicator.createAttributes();
     }
+
+    @Override
+    public boolean isAggressive() {
+        return true;
+    }
 }
