@@ -161,6 +161,13 @@ public class FutUaiMod
                     Mob::checkMobSpawnRules,
                     SpawnPlacementRegisterEvent.Operation.REPLACE
             );
+            event.register(
+                    ModEntities.PITERA_MOB.get(),
+                    SpawnPlacementTypes.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                    PiteraEntity::checkPiteraSpawn,
+                    SpawnPlacementRegisterEvent.Operation.REPLACE
+            );
         }
         
     }
