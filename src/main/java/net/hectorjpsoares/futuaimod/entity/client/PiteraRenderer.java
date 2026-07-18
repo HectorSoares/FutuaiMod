@@ -16,7 +16,6 @@ public class PiteraRenderer extends PhantomRenderer {
 
     public PiteraRenderer(EntityRendererProvider.Context context) {
         super(context);
-
         this.layers.clear();
     }
 

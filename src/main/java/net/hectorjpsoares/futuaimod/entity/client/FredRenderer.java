@@ -12,6 +12,7 @@ public class FredRenderer extends EndermanRenderer {
 
     public FredRenderer(EntityRendererProvider.Context context) {
         super(context);
+        this.layers.clear();
     }
 
     @Override

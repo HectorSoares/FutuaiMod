@@ -9,6 +9,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Parrot;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
 public class PomboEntity extends Parrot {
@@ -59,7 +60,7 @@ public class PomboEntity extends Parrot {
         if (hasAdultFox && hasBabyFox) {
 
             this.spawnAtLocation(
-                    ModItems.PREXECA_MILTON.get()
+                    Items.PINK_SHULKER_BOX
             );
 
             droppedForFox = true;
