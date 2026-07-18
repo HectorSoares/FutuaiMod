@@ -1,5 +1,8 @@
 package net.hectorjpsoares.futuaimod.entity.custom;
 
+import java.util.List;
+
+import net.hectorjpsoares.futuaimod.item.ModItems;
 import net.hectorjpsoares.futuaimod.sound.ModSounds;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
@@ -13,6 +16,8 @@ public class PomboEntity extends Parrot {
         super(entityType, level);
     }
 
+    private boolean droppedForFox = false;
+
     public static AttributeSupplier.Builder createAttributes() {
         return Parrot.createAttributes()
                 .add(Attributes.MAX_HEALTH, 6.0)
@@ -22,5 +27,42 @@ public class PomboEntity extends Parrot {
     @Override
     public SoundEvent getAmbientSound() {
         return ModSounds.POMBO_AMBIENT_SOUND.get();
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+
+        if (!this.level().isClientSide) {
+            checkFoxInteraction();
+        }
+    }
+
+    private void checkFoxInteraction() {
+
+        if (droppedForFox) {
+            return;
+        }
+
+        var foxes = this.level()
+                .getEntitiesOfClass(
+                        FutUaiFoxEntity.class,
+                        this.getBoundingBox().inflate(5)
+                );
+
+        boolean hasAdultFox = foxes.stream()
+                .anyMatch(fox -> !fox.isBaby());
+
+        boolean hasBabyFox = foxes.stream()
+                .anyMatch(fox -> fox.isBaby());
+
+        if (hasAdultFox && hasBabyFox) {
+
+            this.spawnAtLocation(
+                    ModItems.PREXECA_MILTON.get()
+            );
+
+            droppedForFox = true;
+        }
     }
 }

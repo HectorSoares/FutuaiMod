@@ -17,6 +17,7 @@
   "item.futuaimod.ze_pedro_spawn_egg": "Ze Pedro Spawn Egg",
   "item.futuaimod.joao_spawn_egg": "Joao Spawn Egg",
   "item.futuaimod.jamal_spawn_egg": "Jamal Spawn Egg",
+  "item.futuaimod.futuai_fox_spawn_egg": "Raposão Spawn Egg",
 
   "item.futuaimod.abada_helmet": "Abada Helmet",
   "item.futuaimod.abada_chestplate": "Abada Chestplate",
@@ -33,6 +34,8 @@
   "entity.futuaimod.zepedro_mob": "Ze Pedro",
   "entity.futuaimod.joao_mob": "Joao",
   "entity.futuaimod.jamal_mob": "Jamal",
+
+  "entity.futuaimod.futuai_fox": "Raposão FutUai",
 
   "creativetab.futuaimod.futuai_tab": "Itens do FutUaiMod",
 

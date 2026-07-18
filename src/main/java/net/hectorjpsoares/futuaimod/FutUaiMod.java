@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import net.hectorjpsoares.futuaimod.entity.ModEntities;
 import net.hectorjpsoares.futuaimod.entity.client.FredRenderer;
 import net.hectorjpsoares.futuaimod.entity.client.FroisRenderer;
+import net.hectorjpsoares.futuaimod.entity.client.FutUaiFoxRenderer;
 import net.hectorjpsoares.futuaimod.entity.client.HectorRenderer;
 import net.hectorjpsoares.futuaimod.entity.client.JamalRenderer;
 import net.hectorjpsoares.futuaimod.entity.client.JoaoRenderer;
@@ -14,6 +15,7 @@ import net.hectorjpsoares.futuaimod.entity.client.YuriRenderer;
 import net.hectorjpsoares.futuaimod.entity.client.ZePedroRenderer;
 import net.hectorjpsoares.futuaimod.entity.custom.FredEntity;
 import net.hectorjpsoares.futuaimod.entity.custom.FroisEntity;
+import net.hectorjpsoares.futuaimod.entity.custom.FutUaiFoxEntity;
 import net.hectorjpsoares.futuaimod.entity.custom.HectorEntity;
 import net.hectorjpsoares.futuaimod.entity.custom.JamalEntity;
 import net.hectorjpsoares.futuaimod.entity.custom.JoaoEntity;
@@ -83,14 +85,14 @@ public class FutUaiMod
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
-            event.accept(ModItems.CRACKLING_PORK);
-            event.accept(ModItems.PREXECA_MILTON);
-            event.accept(ModItems.PORK_SKIN);
-            event.accept(ModItems.COLD_BEER);
-            event.accept(ModItems.BLACK_PEARL_JAM_DISC);
-            event.accept(ModItems.PORTO_FARIA);
-        }
+        // if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
+        //     event.accept(ModItems.CRACKLING_PORK);
+        //     event.accept(ModItems.PREXECA_MILTON);
+        //     event.accept(ModItems.PORK_SKIN);
+        //     event.accept(ModItems.COLD_BEER);
+        //     event.accept(ModItems.BLACK_PEARL_JAM_DISC);
+        //     event.accept(ModItems.PORTO_FARIA);
+        // }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -119,6 +121,8 @@ public class FutUaiMod
             event.registerEntityRenderer(ModEntities.ZE_PEDRO_MOB.get(), ZePedroRenderer::new);
             event.registerEntityRenderer(ModEntities.JOAO_MOB.get(), JoaoRenderer::new);
             event.registerEntityRenderer(ModEntities.JAMAL_MOB.get(), JamalRenderer::new);
+
+            event.registerEntityRenderer(ModEntities.FUTUAI_FOX.get(), FutUaiFoxRenderer::new);
         }
     }
 
@@ -136,6 +140,8 @@ public class FutUaiMod
             event.put(ModEntities.ZE_PEDRO_MOB.get(), ZePedroEntity.createAttributes().build());
             event.put(ModEntities.JOAO_MOB.get(), JoaoEntity.createAttributes().build());
             event.put(ModEntities.JAMAL_MOB.get(), JamalEntity.createAttributes().build());
+
+            event.put(ModEntities.FUTUAI_FOX.get(), FutUaiFoxEntity.createAttributes().build());
         }
 
         @SubscribeEvent

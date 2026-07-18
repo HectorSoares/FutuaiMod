@@ -3,6 +3,7 @@ package net.hectorjpsoares.futuaimod.entity;
 import net.hectorjpsoares.futuaimod.FutUaiMod;
 import net.hectorjpsoares.futuaimod.entity.custom.FredEntity;
 import net.hectorjpsoares.futuaimod.entity.custom.FroisEntity;
+import net.hectorjpsoares.futuaimod.entity.custom.FutUaiFoxEntity;
 import net.hectorjpsoares.futuaimod.entity.custom.HectorEntity;
 import net.hectorjpsoares.futuaimod.entity.custom.JamalEntity;
 import net.hectorjpsoares.futuaimod.entity.custom.JoaoEntity;
@@ -25,7 +26,7 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<PomboEntity>> POMBO_MOB =
             ENTITIES.register("pombo_mob", () -> EntityType.Builder.of(PomboEntity::new, MobCategory.CREATURE)
-                    .sized(0.5f, 0.9f)
+                    .sized(2.0F, 3.0F)
                     .build("pombo_mob"));
 
     public static final RegistryObject<EntityType<PiteraEntity>> PITERA_MOB =
@@ -72,6 +73,13 @@ public class ModEntities {
             ENTITIES.register("jamal_mob", () -> EntityType.Builder.of(JamalEntity::new, MobCategory.CREATURE)
                     .sized(0.6f, 1.95f)
                     .build("jamal_mob"));
+
+     public static final RegistryObject<EntityType<FutUaiFoxEntity>> FUTUAI_FOX =
+        ENTITIES.register("futuai_fox",
+                () -> EntityType.Builder
+                        .of(FutUaiFoxEntity::new, MobCategory.CREATURE)
+                        .sized(0.6F, 0.7F)
+                        .build("futuai_fox"));
 
     public static void register(IEventBus eventBus) {
         ENTITIES.register(eventBus);

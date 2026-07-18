@@ -1,7 +1,6 @@
 package net.hectorjpsoares.futuaimod.entity.client;
 
 import net.hectorjpsoares.futuaimod.FutUaiMod;
-import net.hectorjpsoares.futuaimod.entity.client.layers.YuriEyesLayer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.WardenRenderer;
 import net.minecraft.resources.ResourceLocation;

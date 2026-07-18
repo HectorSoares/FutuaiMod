@@ -105,6 +105,9 @@ public class ModItems {
     public static final RegistryObject<Item> JAMAL_SPAWN_EGG =
         registerSpawnEgg("jamal_spawn_egg", ModEntities.JAMAL_MOB, 0x263238, 0x90CAF9);
 
+    public static final RegistryObject<Item> FUTUAI_FOX_SPAWN_EGG =
+        registerSpawnEgg("futuai_fox_spawn_egg", ModEntities.FUTUAI_FOX, 0x003366, 0xFFFFFF); 
+
         
 
 

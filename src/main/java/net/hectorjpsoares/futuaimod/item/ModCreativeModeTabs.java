@@ -34,11 +34,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ZE_PEDRO_SPAWN_EGG.get());
                         output.accept(ModItems.JOAO_SPAWN_EGG.get());
                         output.accept(ModItems.JAMAL_SPAWN_EGG.get());
+                        output.accept(ModItems.FUTUAI_FOX_SPAWN_EGG.get());
 
-                        output.accept(ModItems.ABADA_HELMET.get());
+                        //output.accept(ModItems.ABADA_HELMET.get());
                         output.accept(ModItems.ABADA_CHESTPLATE.get());
-                        output.accept(ModItems.ABADA_LEGGINGS.get());
-                        output.accept(ModItems.ABADA_BOOTS.get());
+                        // output.accept(ModItems.ABADA_LEGGINGS.get());
+                        // output.accept(ModItems.ABADA_BOOTS.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {
