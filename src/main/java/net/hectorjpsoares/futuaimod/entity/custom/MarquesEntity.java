@@ -1,7 +1,9 @@
 package net.hectorjpsoares.futuaimod.entity.custom;
 
 
+import net.hectorjpsoares.futuaimod.sound.ModSounds;
 import net.hectorjpsoares.futuaimod.trades.MarquesTrades;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -17,6 +19,10 @@ public class MarquesEntity extends WanderingTrader {
         super(entityType, level);
     }
 
+    @Override
+    public SoundEvent getAmbientSound() {
+        return ModSounds.MARQUES_AMBIENT_SOUND.get();
+    }
 
     @Override
     public MerchantOffers getOffers() {

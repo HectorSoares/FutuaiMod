@@ -23,6 +23,7 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> POMBO_AMBIENT_SOUND = registerSoundEvent("pombo_ambient_sound");
     public static final RegistryObject<SoundEvent> FRED_DEATH_SOUND = registerSoundEvent("fred_death_sound");
     public static final RegistryObject<SoundEvent> FRED_HURT_SOUND = registerSoundEvent("fred_hurt_sound");
+    public static final RegistryObject<SoundEvent> MARQUES_AMBIENT_SOUND = registerSoundEvent("marques_ambient_sound");
     public static final ResourceKey<JukeboxSong> BLACK_PEARL_JAM_KEY = ResourceKey.create(Registries.JUKEBOX_SONG,
             ResourceLocation.fromNamespaceAndPath(FutUaiMod.MOD_ID, "black_pearl_jam"));
 

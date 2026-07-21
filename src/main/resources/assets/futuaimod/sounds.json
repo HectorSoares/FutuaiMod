@@ -49,6 +49,14 @@
     ]
   },
 
+  "marques_ambient_sound": {
+    "sounds": [
+      {
+        "name": "futuaimod:entity/marques/ambient"
+      }
+    ]
+  },
+
   "fred_death_sound": {
     "sounds": [
       {
