@@ -1,45 +1,47 @@
 package net.hectorjpsoares.futuaimod.entity.custom;
 
-import javax.annotation.Nullable;
-
+import net.hectorjpsoares.futuaimod.trades.JamalTrades;
 import net.hectorjpsoares.futuaimod.villager.ModVillagerProfessions;
-import net.minecraft.world.DifficultyInstance;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.npc.VillagerData;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
 
 public class JamalEntity extends Villager {
 
-    public JamalEntity(
-            EntityType<? extends Villager> entityType,
-            Level level
-    ) {
-        super(entityType, level);
-    }
+  public JamalEntity(
+      EntityType<? extends Villager> entityType,
+      Level level) {
+    super(entityType, level);
 
-    @Override
-    public SpawnGroupData finalizeSpawn(
-            ServerLevelAccessor level,
-            DifficultyInstance difficulty,
-            MobSpawnType spawnType,
-            @Nullable SpawnGroupData spawnData
-    ) {
-        SpawnGroupData data = super.finalizeSpawn(
-                level,
-                difficulty,
-                spawnType,
-                spawnData
-        );
+    this.setVillagerData(
+        this.getVillagerData()
+            .setProfession(
+                ModVillagerProfessions.JORNALISTA.get())
+            .setLevel(1));
+  }
 
-        this.setVillagerData(
-                this.getVillagerData().setProfession(
-                        ModVillagerProfessions.JORNALISTA.get()
-                )
-        );
+  @Override
+  protected void updateTrades() {
 
-        return data;
-    }
+    this.getOffers().clear();
+
+    JamalTrades.addTrades(
+        this.getOffers(),
+        this.getVillagerData().getLevel());
+  }
+
+  @Override
+  public void setVillagerData(VillagerData data) {
+
+    super.setVillagerData(
+        data.setProfession(
+            ModVillagerProfessions.JORNALISTA.get()));
+  }
+
+  @Override
+  public Component getDisplayName() {
+    return Component.literal("Jamal");
+  }
 }

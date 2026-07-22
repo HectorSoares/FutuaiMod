@@ -11,15 +11,13 @@ import java.util.Set;
 
 public class ModPOIs {
 
-    public static final DeferredRegister<PoiType> POI_TYPES =
-            DeferredRegister.create(Registries.POINT_OF_INTEREST_TYPE, FutUaiMod.MOD_ID);
+  public static final DeferredRegister<PoiType> POI_TYPES = DeferredRegister.create(
+      Registries.POINT_OF_INTEREST_TYPE,
+      FutUaiMod.MOD_ID);
 
-    public static final RegistryObject<PoiType> JORNALISTA =
-            POI_TYPES.register("jornalista", () ->
-                    new PoiType(
-                            Set.of(Blocks.BOOKSHELF.defaultBlockState()),
-                            1,
-                            1
-                    )
-            );
+  public static final RegistryObject<PoiType> JORNALISTA = POI_TYPES.register("jornalista", () -> new PoiType(
+      Set.of(
+          Blocks.CRAFTING_TABLE.defaultBlockState()),
+      1,
+      1));
 }

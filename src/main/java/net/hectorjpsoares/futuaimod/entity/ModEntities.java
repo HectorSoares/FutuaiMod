@@ -21,67 +21,67 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ModEntities {
 
-    public static final DeferredRegister<EntityType<?>> ENTITIES =
-            DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, FutUaiMod.MOD_ID);
+  public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES,
+      FutUaiMod.MOD_ID);
 
-    public static final RegistryObject<EntityType<PomboEntity>> POMBO_MOB =
-            ENTITIES.register("pombo_mob", () -> EntityType.Builder.of(PomboEntity::new, MobCategory.CREATURE)
-                    .sized(2.0F, 3.0F)
-                    .build("pombo_mob"));
+  public static final RegistryObject<EntityType<PomboEntity>> POMBO_MOB = ENTITIES.register("pombo_mob",
+      () -> EntityType.Builder.of(PomboEntity::new, MobCategory.CREATURE)
+          .sized(2.0F, 3.0F)
+          .build("pombo_mob"));
 
-    public static final RegistryObject<EntityType<PiteraEntity>> PITERA_MOB =
-            ENTITIES.register("pitera_mob", () -> EntityType.Builder.of(PiteraEntity::new, MobCategory.MONSTER)
-                    .sized(0.5f, 0.9f)
-                    .build("pitera_mob"));
+  public static final RegistryObject<EntityType<PiteraEntity>> PITERA_MOB = ENTITIES.register("pitera_mob",
+      () -> EntityType.Builder.of(PiteraEntity::new, MobCategory.MONSTER)
+          .sized(0.5f, 0.9f)
+          .build("pitera_mob"));
 
-    public static final RegistryObject<EntityType<YuriEntity>> YURI_MOB =
-            ENTITIES.register("yuri_mob", () -> EntityType.Builder.of(YuriEntity::new, MobCategory.MONSTER)
-                    .sized(0.9f, 2.9f)
-                    .build("yuri_mob"));
+  public static final RegistryObject<EntityType<YuriEntity>> YURI_MOB = ENTITIES.register("yuri_mob",
+      () -> EntityType.Builder.of(YuriEntity::new, MobCategory.MONSTER)
+          .sized(0.9f, 2.9f)
+          .build("yuri_mob"));
 
-    public static final RegistryObject<EntityType<FredEntity>> FRED_MOB =
-            ENTITIES.register("fred_mob", () -> EntityType.Builder.of(FredEntity::new, MobCategory.MONSTER)
-                    .sized(0.6f, 2.9f)
-                    .build("fred_mob"));
+  public static final RegistryObject<EntityType<FredEntity>> FRED_MOB = ENTITIES.register("fred_mob",
+      () -> EntityType.Builder.of(FredEntity::new, MobCategory.MONSTER)
+          .sized(0.6f, 2.9f)
+          .build("fred_mob"));
 
-    public static final RegistryObject<EntityType<FroisEntity>> FROIS_MOB =
-            ENTITIES.register("frois_mob", () -> EntityType.Builder.of(FroisEntity::new, MobCategory.MONSTER)
-                    .sized(0.6f, 1.95f)
-                    .build("frois_mob"));
+  public static final RegistryObject<EntityType<FroisEntity>> FROIS_MOB = ENTITIES.register("frois_mob",
+      () -> EntityType.Builder.of(FroisEntity::new, MobCategory.MONSTER)
+          .sized(0.6f, 1.95f)
+          .build("frois_mob"));
 
-    public static final RegistryObject<EntityType<HectorEntity>> HECTOR_MOB =
-            ENTITIES.register("hector_mob", () -> EntityType.Builder.of(HectorEntity::new, MobCategory.CREATURE)
-                    .sized(0.6f, 1.95f)
-                    .build("hector_mob"));
+  public static final RegistryObject<EntityType<HectorEntity>> HECTOR_MOB = ENTITIES.register("hector_mob",
+      () -> EntityType.Builder.of(HectorEntity::new, MobCategory.CREATURE)
+          .sized(0.6f, 1.95f)
+          .build("hector_mob"));
 
-    public static final RegistryObject<EntityType<MarquesEntity>> MARQUES_MOB =
-            ENTITIES.register("marques_mob", () -> EntityType.Builder.of(MarquesEntity::new, MobCategory.CREATURE)
-                    .sized(0.6f, 1.95f)
-                    .build("marques_mob"));
+  public static final RegistryObject<EntityType<MarquesEntity>> MARQUES_MOB = ENTITIES.register("marques_mob",
+      () -> EntityType.Builder.of(MarquesEntity::new, MobCategory.CREATURE)
+          .sized(0.6f, 1.95f)
+          .build("marques_mob"));
 
-    public static final RegistryObject<EntityType<ZePedroEntity>> ZE_PEDRO_MOB =
-            ENTITIES.register("ze_pedro_mob", () -> EntityType.Builder.of(ZePedroEntity::new, MobCategory.CREATURE)
-                    .sized(0.6f, 1.95f)
-                    .build("ze_pedro_mob"));
+  public static final RegistryObject<EntityType<ZePedroEntity>> ZE_PEDRO_MOB = ENTITIES.register("ze_pedro_mob",
+      () -> EntityType.Builder.of(ZePedroEntity::new, MobCategory.CREATURE)
+          .sized(0.6f, 1.95f)
+          .build("ze_pedro_mob"));
 
-    public static final RegistryObject<EntityType<JoaoEntity>> JOAO_MOB =
-            ENTITIES.register("joao_mob", () -> EntityType.Builder.of(JoaoEntity::new, MobCategory.CREATURE)
-                    .sized(0.6f, 1.95f)
-                    .build("joao_mob"));
+  public static final RegistryObject<EntityType<JoaoEntity>> JOAO_MOB = ENTITIES.register("joao_mob",
+      () -> EntityType.Builder.of(JoaoEntity::new, MobCategory.CREATURE)
+          .sized(0.6f, 1.95f)
+          .build("joao_mob"));
 
-    public static final RegistryObject<EntityType<JamalEntity>> JAMAL_MOB =
-            ENTITIES.register("jamal_mob", () -> EntityType.Builder.of(JamalEntity::new, MobCategory.CREATURE)
-                    .sized(0.6f, 1.95f)
-                    .build("jamal_mob"));
+  public static final RegistryObject<EntityType<JamalEntity>> JAMAL_MOB = ENTITIES.register("jamal_mob",
+      () -> EntityType.Builder.of(JamalEntity::new,
+          MobCategory.MISC)
+          .sized(0.6f, 1.95f)
+          .build("jamal_mob"));
 
-     public static final RegistryObject<EntityType<FutUaiFoxEntity>> FUTUAI_FOX =
-        ENTITIES.register("futuai_fox",
-                () -> EntityType.Builder
-                        .of(FutUaiFoxEntity::new, MobCategory.CREATURE)
-                        .sized(0.6F, 0.7F)
-                        .build("futuai_fox"));
+  public static final RegistryObject<EntityType<FutUaiFoxEntity>> FUTUAI_FOX = ENTITIES.register("futuai_fox",
+      () -> EntityType.Builder
+          .of(FutUaiFoxEntity::new, MobCategory.CREATURE)
+          .sized(0.6F, 0.7F)
+          .build("futuai_fox"));
 
-    public static void register(IEventBus eventBus) {
-        ENTITIES.register(eventBus);
-    }
+  public static void register(IEventBus eventBus) {
+    ENTITIES.register(eventBus);
+  }
 }
