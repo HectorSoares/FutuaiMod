@@ -27,6 +27,8 @@ import net.hectorjpsoares.futuaimod.entity.custom.ZePedroEntity;
 import net.hectorjpsoares.futuaimod.item.ModCreativeModeTabs;
 import net.hectorjpsoares.futuaimod.item.ModItems;
 import net.hectorjpsoares.futuaimod.sound.ModSounds;
+import net.hectorjpsoares.futuaimod.villager.ModPOIs;
+import net.hectorjpsoares.futuaimod.villager.ModVillagerProfessions;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.animal.Animal;
@@ -71,6 +73,9 @@ public class FutUaiMod
         ModItems.register(modEventBus);
         ModSounds.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
+
+        ModPOIs.POI_TYPES.register(modEventBus);
+        ModVillagerProfessions.PROFESSIONS.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);

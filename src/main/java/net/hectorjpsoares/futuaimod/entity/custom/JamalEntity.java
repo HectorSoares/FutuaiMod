@@ -1,19 +1,45 @@
 package net.hectorjpsoares.futuaimod.entity.custom;
 
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.monster.Phantom;
-import net.minecraft.world.level.Level;
+import javax.annotation.Nullable;
 
-public class JamalEntity extends Phantom {
-    public JamalEntity(EntityType<? extends Phantom> entityType, Level level) {
+import net.hectorjpsoares.futuaimod.villager.ModVillagerProfessions;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+
+public class JamalEntity extends Villager {
+
+    public JamalEntity(
+            EntityType<? extends Villager> entityType,
+            Level level
+    ) {
         super(entityType, level);
     }
 
-    public static AttributeSupplier.Builder createAttributes() {
-        return Phantom.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 6.0)
-                .add(Attributes.MOVEMENT_SPEED, 0.25);
-   }
+    @Override
+    public SpawnGroupData finalizeSpawn(
+            ServerLevelAccessor level,
+            DifficultyInstance difficulty,
+            MobSpawnType spawnType,
+            @Nullable SpawnGroupData spawnData
+    ) {
+        SpawnGroupData data = super.finalizeSpawn(
+                level,
+                difficulty,
+                spawnType,
+                spawnData
+        );
+
+        this.setVillagerData(
+                this.getVillagerData().setProfession(
+                        ModVillagerProfessions.JORNALISTA.get()
+                )
+        );
+
+        return data;
+    }
 }
