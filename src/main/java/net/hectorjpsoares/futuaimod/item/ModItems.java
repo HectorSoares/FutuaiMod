@@ -25,6 +25,9 @@ public class ModItems {
     public static final RegistryObject<Item> PORTO_FARIA = ITEMS.register("porto_faria",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> ADRENALINE_INJECTION = ITEMS.register("adrenaline_injection",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> CRACKLING_PORK = ITEMS.register("crackling_pork",
             () -> new Item(new Item.Properties()
                     .food(new FoodProperties.Builder()

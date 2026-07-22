@@ -35,19 +35,19 @@ public class YuriEntity extends Warden {
     }
 
     @Override
-        protected SoundEvent getAmbientSound() {
-            return ModSounds.YURI_AMBIENT_SOUND.get();
-        }
+    protected SoundEvent getAmbientSound() {
+        return ModSounds.YURI_AMBIENT_SOUND.get();
+    }
 
-        @Override
-        protected SoundEvent getHurtSound(DamageSource damageSource) {
-            return ModSounds.YURI_HURT_SOUND.get();
-        }
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return ModSounds.YURI_HURT_SOUND.get();
+    }
 
-        @Override
-        protected SoundEvent getDeathSound() {
-            return ModSounds.YURI_DEATH_SOUND.get();
-        }
+    @Override
+    protected SoundEvent getDeathSound() {
+        return ModSounds.YURI_DEATH_SOUND.get();
+    }
 
     @Override
     public void tick() {
@@ -75,5 +75,34 @@ public class YuriEntity extends Warden {
 
         return player.getMainHandItem().is(ModItems.PORTO_FARIA.get())
                 || player.getOffhandItem().is(ModItems.PORTO_FARIA.get());
+    }
+
+    @Override
+    public boolean hurt(DamageSource source, float amount) {
+
+        Entity attacker = source.getEntity();
+
+        if (attacker instanceof Player player) {
+            stealAdrenalineInjection(player);
+        }
+
+        return super.hurt(source, amount);
+    }
+
+    private void stealAdrenalineInjection(Player player) {
+        for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
+
+            ItemStack stack = player.getInventory().getItem(i);
+
+            if (stack.is(ModItems.ADRENALINE_INJECTION.get())) {
+                stack.shrink(1);
+
+                if (stack.isEmpty()) {
+                    player.getInventory().setItem(i, ItemStack.EMPTY);
+                }
+
+                return;
+            }
+        }
     }
 }

@@ -23,6 +23,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.COLD_BEER.get());
                         output.accept(ModItems.BLACK_PEARL_JAM_DISC.get());
                         output.accept(ModItems.PORTO_FARIA.get());
+                        output.accept(ModItems.ADRENALINE_INJECTION.get());
 
                         output.accept(ModItems.POMBO_SPAWN_EGG.get());
                         output.accept(ModItems.PITERA_SPAWN_EGG.get());
