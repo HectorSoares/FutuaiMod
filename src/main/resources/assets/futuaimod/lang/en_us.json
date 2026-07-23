@@ -32,9 +32,11 @@
   "entity.futuaimod.frois_mob": "Frois",
   "entity.futuaimod.hector_mob": "Hector",
   "entity.futuaimod.marques_mob": "Marques",
-  "entity.futuaimod.zepedro_mob": "Ze Pedro",
+  "entity.futuaimod.ze_pedro_mob": "Ze Pedro",
   "entity.futuaimod.joao_mob": "Joao",
   "entity.futuaimod.jamal_mob": "Jamal",
+  "entity.futuaimod.jornalista": "Jornalista",
+  "entity.futuaimod.jamal_mob.futuaimod.jornalista": "Jamal Notícias",
 
   "entity.futuaimod.futuai_fox": "Raposão FutUai",
 

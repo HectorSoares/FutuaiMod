@@ -1,5 +1,9 @@
 package net.hectorjpsoares.futuaimod.news;
 
-public class NewsEventType {
-    
+public enum NewsEventType {
+  MOB_SPAWNED,
+  MOB_KILLED,
+  PLAYER_KILLED,
+  INTERACTION,
+  REWARD
 }
