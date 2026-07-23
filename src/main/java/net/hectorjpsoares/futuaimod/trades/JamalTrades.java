@@ -1,23 +1,18 @@
 package net.hectorjpsoares.futuaimod.trades;
 
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.component.WrittenBookContent;
 import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
-
-import net.minecraft.server.network.Filterable;
-
-import java.util.List;
 
 public class JamalTrades {
 
   public static void addTrades(
       MerchantOffers offers,
-      int level) {
+      int level,
+      ServerLevel serverLevel) {
 
     if (level >= 1) {
 
@@ -79,46 +74,12 @@ public class JamalTrades {
               0.05F));
 
       offers.add(
-          new MerchantOffer(
+          new DailyNewsMerchantOffer(
+              serverLevel,
               new ItemCost(Items.EMERALD, 5),
-              createTestNewsBook(),
               1,
               20,
               0.05F));
     }
-  }
-
-  private static ItemStack createTestNewsBook() {
-
-    ItemStack book = new ItemStack(Items.WRITTEN_BOOK);
-
-    String titleText = "Notícias do Jamal";
-
-    Component pageText = Component.literal(
-        "Primeira notícia registrada por Jamal.\n\n" +
-            "O mundo de Nem frio Nem calor " +
-            "acaba de receber um novo jornalista.");
-
-    Filterable<String> title = new Filterable<>(
-        titleText,
-        java.util.Optional.of(titleText));
-
-    List<Filterable<Component>> pages = List.of(
-        new Filterable<>(
-            pageText,
-            java.util.Optional.of(pageText)));
-
-    WrittenBookContent content = new WrittenBookContent(
-        title,
-        "Jamal",
-        0,
-        pages,
-        true);
-
-    book.set(
-        DataComponents.WRITTEN_BOOK_CONTENT,
-        content);
-
-    return book;
   }
 }

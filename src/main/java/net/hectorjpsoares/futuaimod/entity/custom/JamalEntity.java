@@ -3,6 +3,7 @@ package net.hectorjpsoares.futuaimod.entity.custom;
 import net.hectorjpsoares.futuaimod.trades.JamalTrades;
 import net.hectorjpsoares.futuaimod.villager.ModVillagerProfessions;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.npc.VillagerData;
@@ -24,12 +25,15 @@ public class JamalEntity extends Villager {
 
   @Override
   protected void updateTrades() {
-
     this.getOffers().clear();
+
+    if (!(this.level() instanceof ServerLevel serverLevel))
+      return;
 
     JamalTrades.addTrades(
         this.getOffers(),
-        this.getVillagerData().getLevel());
+        this.getVillagerData().getLevel(),
+        serverLevel);
   }
 
   @Override

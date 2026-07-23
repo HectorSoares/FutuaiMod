@@ -6,16 +6,23 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.saveddata.SavedData;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 public class NewsManager extends SavedData {
 
   private static final String DATA_NAME = "futuaimod_news";
   private static final String NEWS_LIST = "news";
+  private static final String SPOTTED_ENTITIES = "spotted_entities";
+  private static final String UUID = "uuid";
+
   private static final int MAX_NEWS = 30;
 
   private final LinkedList<NewsEvent> news = new LinkedList<>();
+  private final Set<UUID> spottedEntities = new HashSet<>();
 
   public NewsManager() {
   }
@@ -45,6 +52,18 @@ public class NewsManager extends SavedData {
       manager.news.add(event);
     }
 
+    ListTag spottedList = tag.getList(
+        SPOTTED_ENTITIES,
+        CompoundTag.TAG_COMPOUND);
+
+    for (int i = 0; i < spottedList.size(); i++) {
+      CompoundTag spottedTag = spottedList.getCompound(i);
+
+      if (spottedTag.hasUUID(UUID))
+        manager.spottedEntities.add(
+            spottedTag.getUUID(UUID));
+    }
+
     return manager;
   }
 
@@ -62,6 +81,19 @@ public class NewsManager extends SavedData {
     }
 
     tag.put(NEWS_LIST, newsList);
+
+    ListTag spottedList = new ListTag();
+
+    for (UUID entityUUID : spottedEntities) {
+      CompoundTag spottedTag = new CompoundTag();
+      spottedTag.putUUID(UUID, entityUUID);
+      spottedList.add(spottedTag);
+    }
+
+    tag.put(
+        SPOTTED_ENTITIES,
+        spottedList);
+
     return tag;
   }
 
@@ -72,14 +104,30 @@ public class NewsManager extends SavedData {
       news.removeFirst();
 
     setDirty();
-    System.out.println(
-        "NewsManager: " +
-            news.size() +
-            " news stored.");
+  }
+
+  public boolean hasBeenSpotted(UUID entityUUID) {
+    return spottedEntities.contains(entityUUID);
+  }
+
+  public void registerSpottedEntity(UUID entityUUID) {
+    spottedEntities.add(entityUUID);
+    setDirty();
   }
 
   public List<NewsEvent> getNews() {
     return List.copyOf(news);
+  }
+
+  public List<NewsEvent> getLatestNews(int amount) {
+    int fromIndex = Math.max(
+        0,
+        news.size() - amount);
+
+    return List.copyOf(
+        news.subList(
+            fromIndex,
+            news.size()));
   }
 
   public void clear() {
