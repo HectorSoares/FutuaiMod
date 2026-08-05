@@ -77,7 +77,7 @@ public class JamalTrades {
           new DailyNewsMerchantOffer(
               serverLevel,
               new ItemCost(Items.EMERALD, 5),
-              1,
+              5,
               20,
               0.05F));
     }

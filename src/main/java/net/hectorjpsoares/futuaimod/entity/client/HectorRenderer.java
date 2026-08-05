@@ -2,21 +2,28 @@ package net.hectorjpsoares.futuaimod.entity.client;
 
 import net.hectorjpsoares.futuaimod.FutUaiMod;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.PhantomRenderer;
-import net.minecraft.client.renderer.entity.VillagerRenderer;
+import net.minecraft.client.renderer.entity.EvokerRenderer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.monster.Evoker;
+import net.minecraft.world.level.Level;
 
-public class HectorRenderer extends PhantomRenderer {
-    private static final ResourceLocation TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(FutUaiMod.MOD_ID, "textures/entity/default_mob.png");
+public class HectorRenderer extends EvokerRenderer<Evoker> {
+  private static final ResourceLocation OVERWORLD_TEXTURE = ResourceLocation.fromNamespaceAndPath(FutUaiMod.MOD_ID,
+      "textures/entity/hector_overworld_mob.png");
 
-    public HectorRenderer(EntityRendererProvider.Context context) {
-        super(context);
+  private static final ResourceLocation NETHER_TEXTURE = ResourceLocation.fromNamespaceAndPath(FutUaiMod.MOD_ID,
+      "textures/entity/hector_nether_mob.png");
+
+  public HectorRenderer(EntityRendererProvider.Context context) {
+    super(context);
+  }
+
+  @Override
+  public ResourceLocation getTextureLocation(Evoker entity) {
+    if (entity.level().dimension().equals(Level.OVERWORLD)) {
+      return OVERWORLD_TEXTURE;
     }
 
-    // @Override
-    // public ResourceLocation getTextureLocation(Villager entity) {
-    //     return TEXTURE;
-    // }
+    return NETHER_TEXTURE;
+  }
 }
