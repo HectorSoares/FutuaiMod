@@ -71,5 +71,13 @@
         "name": "futuaimod:entity/fred/hurt"
       }
     ]
+  },
+
+  "hector_spawn_sound": {
+    "sounds": [
+      {
+        "name": "futuaimod:entity/hector/spawn"
+      }
+    ]
   }
 }

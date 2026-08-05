@@ -7,35 +7,45 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Phantom;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 
 public class PiteraEntity extends Phantom {
-    public PiteraEntity(EntityType<? extends Phantom> entityType, Level level) {
-        super(entityType, level);
+  public PiteraEntity(EntityType<? extends Phantom> entityType, Level level) {
+    super(entityType, level);
+  }
+
+  public static AttributeSupplier.Builder createAttributes() {
+    return Phantom.createMobAttributes()
+        .add(Attributes.MAX_HEALTH, 6.0)
+        .add(Attributes.MOVEMENT_SPEED, 0.25)
+        .add(Attributes.ATTACK_DAMAGE, 2.0);
+  }
+
+  @Override
+  public boolean isSunBurnTick() {
+    return false;
+  }
+
+  @Override
+  public boolean doHurtTarget(net.minecraft.world.entity.Entity target) {
+    boolean hit = super.doHurtTarget(target);
+
+    if (hit && target instanceof Player player) {
+      player.getFoodData().setFoodLevel(0);
     }
 
-    public static AttributeSupplier.Builder createAttributes() {
-        return Phantom.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 6.0)
-                .add(Attributes.MOVEMENT_SPEED, 0.25)
-                .add(Attributes.ATTACK_DAMAGE, 2.0);
-   }
+    return hit;
+  }
 
-    @Override
-    public boolean isSunBurnTick() {
-            return false;
-        }
-
-    public static boolean checkPiteraSpawn(
-            EntityType<PiteraEntity> entityType,
-            ServerLevelAccessor level,
-            MobSpawnType spawnType,
-            BlockPos pos,
-            RandomSource random
-    ) {
-
-        return  level.getBlockState(pos).isAir()
-                && level.getBlockState(pos.above()).isAir();
-    }
+  public static boolean checkPiteraSpawn(
+      EntityType<PiteraEntity> entityType,
+      ServerLevelAccessor level,
+      MobSpawnType spawnType,
+      BlockPos pos,
+      RandomSource random) {
+    return level.getBlockState(pos).isAir()
+        && level.getBlockState(pos.above()).isAir();
+  }
 }

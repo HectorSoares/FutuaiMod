@@ -1,6 +1,7 @@
 package net.hectorjpsoares.futuaimod.entity.custom;
 
 import net.hectorjpsoares.futuaimod.item.ModItems;
+import net.hectorjpsoares.futuaimod.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -8,6 +9,8 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.Goal;
@@ -17,6 +20,7 @@ import net.minecraft.world.entity.monster.SpellcasterIllager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.JukeboxBlock;
 import net.minecraft.world.level.block.entity.JukeboxBlockEntity;
@@ -49,6 +53,27 @@ public class HectorEntity extends Evoker {
     return Evoker.createAttributes()
         .add(Attributes.MAX_HEALTH, 6.0D)
         .add(Attributes.MOVEMENT_SPEED, 0.25D);
+  }
+
+  @Override
+  public SpawnGroupData finalizeSpawn(
+      ServerLevelAccessor level,
+      net.minecraft.world.DifficultyInstance difficulty,
+      MobSpawnType spawnType,
+      SpawnGroupData spawnGroupData) {
+
+    SpawnGroupData data = super.finalizeSpawn(
+        level,
+        difficulty,
+        spawnType,
+        spawnGroupData);
+
+    this.playSound(
+        ModSounds.HECTOR_SPAWN_SOUND.get(),
+        1.0F,
+        1.0F);
+
+    return data;
   }
 
   @Override
