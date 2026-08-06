@@ -61,6 +61,17 @@ public class ModItems {
     public static final RegistryObject<Item> BLACK_PEARL_JAM_DISC = ITEMS.register("black_pearl_jam_disc",
             () -> new Item( new Item.Properties().jukeboxPlayable(ModSounds.BLACK_PEARL_JAM_KEY).stacksTo(1)));
 
+    // Itens especiais provisórios dos mobs. As texturas e funcionalidades serão definidas depois.
+    public static final RegistryObject<Item> POMBO_SPECIAL_ITEM = registerSpecialMobItem("pombo_special_item");
+    public static final RegistryObject<Item> PITERA_SPECIAL_ITEM = registerSpecialMobItem("pitera_special_item");
+    public static final RegistryObject<Item> FRED_SPECIAL_ITEM = registerSpecialMobItem("fred_special_item");
+    public static final RegistryObject<Item> FROIS_SPECIAL_ITEM = registerSpecialMobItem("frois_special_item");
+    public static final RegistryObject<Item> HECTOR_SPECIAL_ITEM = registerSpecialMobItem("hector_special_item");
+    public static final RegistryObject<Item> MARQUES_SPECIAL_ITEM = registerSpecialMobItem("marques_special_item");
+    public static final RegistryObject<Item> JOAO_SPECIAL_ITEM = registerSpecialMobItem("joao_special_item");
+    public static final RegistryObject<Item> JAMAL_SPECIAL_ITEM = registerSpecialMobItem("jamal_special_item");
+    public static final RegistryObject<Item> FUTUAI_FOX_SPECIAL_ITEM = registerSpecialMobItem("futuai_fox_special_item");
+
     public static final RegistryObject<Item> ABADA_HELMET = ITEMS.register("abada_helmet",
             () -> new ArmorItem(ModArmorMaterials.ABADA_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(18))));
@@ -127,4 +138,8 @@ public class ModItems {
     return ITEMS.register(name,
             () -> new ForgeSpawnEggItem(entity, primaryColor, secondaryColor, new Item.Properties()));
 }
+
+    private static RegistryObject<Item> registerSpecialMobItem(String name) {
+        return ITEMS.register(name, () -> new Item(new Item.Properties()));
+    }
 }
