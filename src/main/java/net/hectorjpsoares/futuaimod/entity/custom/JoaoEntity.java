@@ -4,9 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import net.hectorjpsoares.futuaimod.item.ModItems;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Pose;
@@ -20,6 +20,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
 public class JoaoEntity extends Frog {
+
   private static final double TARGET_RANGE = 10.0D;
   private static final double ATTACK_RANGE = 4.0D;
   private static final int TONGUE_DURATION = 12;
@@ -40,6 +41,11 @@ public class JoaoEntity extends Frog {
         .add(Attributes.MAX_HEALTH, 6.0D)
         .add(Attributes.MOVEMENT_SPEED, 0.25D)
         .add(Attributes.ATTACK_DAMAGE, 2.0D);
+  }
+
+  @Override
+  protected void registerGoals() {
+    super.registerGoals();
   }
 
   @Override
@@ -80,7 +86,10 @@ public class JoaoEntity extends Frog {
       return;
     }
 
-    this.getLookControl().setLookAt(player, 30.0F, 30.0F);
+    this.getLookControl().setLookAt(
+        player,
+        30.0F,
+        30.0F);
 
     double distance = this.distanceTo(player);
 
@@ -107,8 +116,10 @@ public class JoaoEntity extends Frog {
       return false;
     }
 
-    return isAvailableSphericalItem(player.getMainHandItem().getItem())
-        || isAvailableSphericalItem(player.getOffhandItem().getItem());
+    return isAvailableSphericalItem(
+        player.getMainHandItem().getItem())
+        || isAvailableSphericalItem(
+            player.getOffhandItem().getItem());
   }
 
   private boolean isAvailableSphericalItem(Item item) {
@@ -148,7 +159,8 @@ public class JoaoEntity extends Frog {
 
   private void dropSpecialItemAfterStealingAllSpheres() {
     if (stolenItems.size() == TOTAL_SPHERICAL_ITEMS) {
-      this.spawnAtLocation(new ItemStack(ModItems.JOAO_SPECIAL_ITEM.get()));
+      this.spawnAtLocation(
+          new ItemStack(ModItems.HEINEKEN.get()));
     }
   }
 

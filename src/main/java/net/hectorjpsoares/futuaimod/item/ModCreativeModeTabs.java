@@ -24,17 +24,16 @@ public class ModCreativeModeTabs {
             output.accept(ModItems.BLACK_PEARL_JAM_DISC.get());
             output.accept(ModItems.PORTO_FARIA.get());
             output.accept(ModItems.ADRENALINE_INJECTION.get());
-            output.accept(ModItems.POMBO_SPECIAL_ITEM.get());
-            output.accept(ModItems.PITERA_SPECIAL_ITEM.get());
-            output.accept(ModItems.FRED_SPECIAL_ITEM.get());
+            output.accept(ModItems.BOMBINHA.get());
+            output.accept(ModItems.TICKET_VENDA_NOVA.get());
+            output.accept(ModItems.TICKET_SERIE_B.get());
             output.accept(ModItems.FRED_BRICKS.get());
             output.accept(ModItems.PIZZA_FROIS.get());
             output.accept(ModItems.FROIS_AXE.get());
             output.accept(ModItems.HECTOR_SPECIAL_ITEM.get());
             output.accept(ModItems.MARQUES_SPECIAL_ITEM.get());
-            output.accept(ModItems.JOAO_SPECIAL_ITEM.get());
-            output.accept(ModItems.JAMAL_SPECIAL_ITEM.get());
-            output.accept(ModItems.FUTUAI_FOX_SPECIAL_ITEM.get());
+            output.accept(ModItems.HEINEKEN.get());
+            output.accept(ModItems.FREUD_BOOK.get());
 
             output.accept(ModItems.POMBO_SPAWN_EGG.get());
             output.accept(ModItems.PITERA_SPAWN_EGG.get());

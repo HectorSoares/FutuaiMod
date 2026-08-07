@@ -49,7 +49,7 @@ public class PiteraEntity extends Phantom {
       DamageSource damageSource,
       boolean recentlyHit) {
     super.dropCustomDeathLoot(level, damageSource, recentlyHit);
-    this.spawnAtLocation(new ItemStack(ModItems.PITERA_SPECIAL_ITEM.get()));
+    this.spawnAtLocation(new ItemStack(ModItems.TICKET_VENDA_NOVA.get()));
   }
 
   public static boolean checkPiteraSpawn(

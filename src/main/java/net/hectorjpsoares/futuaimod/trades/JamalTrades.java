@@ -87,7 +87,7 @@ public class JamalTrades {
       offers.add(
           new MerchantOffer(
               new ItemCost(Items.EMERALD, 12),
-              new ItemStack(ModItems.JAMAL_SPECIAL_ITEM.get()),
+              new ItemStack(ModItems.FREUD_BOOK.get()),
               3,
               30,
               0.05F));

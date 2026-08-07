@@ -16,13 +16,13 @@ public final class TicketSerieBFactory {
   }
 
   public static synchronized ItemStack createTicket() {
-    ItemStack ticket = new ItemStack(ModItems.FRED_SPECIAL_ITEM.get());
+    ItemStack ticket = new ItemStack(ModItems.TICKET_SERIE_B.get());
     nameTicket(ticket);
     return ticket;
   }
 
   public static synchronized void nameTicket(ItemStack ticket) {
-    if (!ticket.is(ModItems.FRED_SPECIAL_ITEM.get())) {
+    if (!ticket.is(ModItems.TICKET_SERIE_B.get())) {
       return;
     }
 

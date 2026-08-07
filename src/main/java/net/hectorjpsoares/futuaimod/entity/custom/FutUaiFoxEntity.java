@@ -12,22 +12,22 @@ import net.minecraft.world.item.Items;
 
 public class FutUaiFoxEntity extends Fox {
 
-    public FutUaiFoxEntity(EntityType<? extends Fox> entityType, Level level) {
-        super(entityType, level);
-    }
+  public FutUaiFoxEntity(EntityType<? extends Fox> entityType, Level level) {
+    super(entityType, level);
+  }
 
-    public static AttributeSupplier.Builder createAttributes() {
-        return Fox.createAttributes();
-    }
+  public static AttributeSupplier.Builder createAttributes() {
+    return Fox.createAttributes();
+  }
 
-    @Override
-    public Fox getBreedOffspring(ServerLevel level, AgeableMob otherParent) {
-        return ModEntities.FUTUAI_FOX.get().create(level);
-    }
+  @Override
+  public Fox getBreedOffspring(ServerLevel level, AgeableMob otherParent) {
+    return ModEntities.FUTUAI_FOX.get().create(level);
+  }
 
-    @Override
-    public boolean isFood(ItemStack stack) {
-        return super.isFood(stack) 
-                || stack.is(Items.CHICKEN);
-    }
+  @Override
+  public boolean isFood(ItemStack stack) {
+    return super.isFood(stack)
+        || stack.is(Items.CHICKEN);
+  }
 }

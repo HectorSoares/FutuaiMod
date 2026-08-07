@@ -1,5 +1,6 @@
 package net.hectorjpsoares.futuaimod.entity.custom;
 
+import net.hectorjpsoares.futuaimod.item.ModItems;
 import net.hectorjpsoares.futuaimod.sound.ModSounds;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
@@ -62,6 +63,7 @@ public class PomboEntity extends Parrot {
 
     if (hasAdultFox && hasBabyFox) {
       this.spawnAtLocation(Items.PINK_SHULKER_BOX);
+      this.spawnAtLocation(ModItems.BOMBINHA.get());
       droppedForFox = true;
     }
   }

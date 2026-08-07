@@ -66,17 +66,16 @@ public class ModItems {
 
   // Itens especiais provisórios dos mobs. As texturas e funcionalidades serão
   // definidas depois.
-  public static final RegistryObject<Item> POMBO_SPECIAL_ITEM = registerSpecialMobItem("pombo_special_item");
-  public static final RegistryObject<Item> PITERA_SPECIAL_ITEM = registerSpecialMobItem("ticket_venda_nova");
-  public static final RegistryObject<Item> FRED_SPECIAL_ITEM = registerSpecialMobItem("ticket_serie_b");
+  public static final RegistryObject<Item> BOMBINHA = registerSpecialMobItem("bombinha");
+  public static final RegistryObject<Item> TICKET_VENDA_NOVA = registerSpecialMobItem("ticket_venda_nova");
+  public static final RegistryObject<Item> TICKET_SERIE_B = registerSpecialMobItem("ticket_serie_b");
   public static final RegistryObject<Item> PIZZA_FROIS = registerSpecialMobItem("pizza_frois");
   public static final RegistryObject<Item> FROIS_AXE = ITEMS.register("frois_axe",
       () -> new AxeItem(Tiers.IRON, new Item.Properties()));
   public static final RegistryObject<Item> HECTOR_SPECIAL_ITEM = registerSpecialMobItem("hector_special_item");
   public static final RegistryObject<Item> MARQUES_SPECIAL_ITEM = registerSpecialMobItem("marques_special_item");
-  public static final RegistryObject<Item> JOAO_SPECIAL_ITEM = registerSpecialMobItem("heineken");
-  public static final RegistryObject<Item> JAMAL_SPECIAL_ITEM = registerSpecialMobItem("freud_book");
-  public static final RegistryObject<Item> FUTUAI_FOX_SPECIAL_ITEM = registerSpecialMobItem("futuai_fox_special_item");
+  public static final RegistryObject<Item> HEINEKEN = registerSpecialMobItem("heineken");
+  public static final RegistryObject<Item> FREUD_BOOK = registerSpecialMobItem("freud_book");
   public static final RegistryObject<Item> FRED_BRICKS = ITEMS.register("fred_bricks",
       () -> new BlockItem(ModBlocks.FRED_BRICKS.get(), new Item.Properties()));
 

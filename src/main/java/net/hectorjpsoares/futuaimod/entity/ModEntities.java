@@ -78,7 +78,7 @@ public class ModEntities {
   public static final RegistryObject<EntityType<FutUaiFoxEntity>> FUTUAI_FOX = ENTITIES.register("futuai_fox",
       () -> EntityType.Builder
           .of(FutUaiFoxEntity::new, MobCategory.CREATURE)
-          .sized(0.6F, 0.7F)
+          .sized(0.9F, 1.1F)
           .build("futuai_fox"));
 
   public static void register(IEventBus eventBus) {
