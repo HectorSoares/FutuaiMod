@@ -1,6 +1,7 @@
 package net.hectorjpsoares.futuaimod.entity.custom;
 
 import net.hectorjpsoares.futuaimod.item.ModItems;
+import net.hectorjpsoares.futuaimod.block.ModBlocks;
 import net.hectorjpsoares.futuaimod.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -11,7 +12,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 
 public class FredEntity extends EnderMan {
 
@@ -40,7 +40,7 @@ public class FredEntity extends EnderMan {
     }
 
     if (this.getCarriedBlock() == null) {
-      this.setCarriedBlock(Blocks.BRICKS.defaultBlockState());
+      this.setCarriedBlock(ModBlocks.FRED_BRICKS.get().defaultBlockState());
     }
   }
 
@@ -163,7 +163,7 @@ public class FredEntity extends EnderMan {
 
     this.level().setBlock(
         pos,
-        Blocks.BRICKS.defaultBlockState(),
+        ModBlocks.FRED_BRICKS.get().defaultBlockState(),
         3);
 
     lastPlacedBlock = pos;

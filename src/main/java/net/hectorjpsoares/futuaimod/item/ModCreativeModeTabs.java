@@ -27,6 +27,7 @@ public class ModCreativeModeTabs {
             output.accept(ModItems.POMBO_SPECIAL_ITEM.get());
             output.accept(ModItems.PITERA_SPECIAL_ITEM.get());
             output.accept(ModItems.FRED_SPECIAL_ITEM.get());
+            output.accept(ModItems.FRED_BRICKS.get());
             output.accept(ModItems.PIZZA_FROIS.get());
             output.accept(ModItems.FROIS_AXE.get());
             output.accept(ModItems.HECTOR_SPECIAL_ITEM.get());

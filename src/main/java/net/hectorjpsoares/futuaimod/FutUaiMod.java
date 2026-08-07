@@ -1,6 +1,7 @@
 package net.hectorjpsoares.futuaimod;
 
 import com.mojang.logging.LogUtils;
+import net.hectorjpsoares.futuaimod.block.ModBlocks;
 import net.hectorjpsoares.futuaimod.entity.ModEntities;
 import net.hectorjpsoares.futuaimod.entity.client.FredRenderer;
 import net.hectorjpsoares.futuaimod.entity.client.FroisRenderer;
@@ -70,6 +71,7 @@ public class FutUaiMod
 
         ModEntities.register(modEventBus);
 
+        ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
         ModSounds.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);

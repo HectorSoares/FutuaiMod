@@ -1,6 +1,7 @@
 package net.hectorjpsoares.futuaimod.item;
 
 import net.hectorjpsoares.futuaimod.FutUaiMod;
+import net.hectorjpsoares.futuaimod.block.ModBlocks;
 import net.hectorjpsoares.futuaimod.entity.ModEntities;
 import net.hectorjpsoares.futuaimod.item.custom.ColdBeerItem;
 import net.hectorjpsoares.futuaimod.sound.ModSounds;
@@ -9,6 +10,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SpawnEggItem;
@@ -75,6 +77,8 @@ public class ModItems {
   public static final RegistryObject<Item> JOAO_SPECIAL_ITEM = registerSpecialMobItem("joao_special_item");
   public static final RegistryObject<Item> JAMAL_SPECIAL_ITEM = registerSpecialMobItem("jamal_special_item");
   public static final RegistryObject<Item> FUTUAI_FOX_SPECIAL_ITEM = registerSpecialMobItem("futuai_fox_special_item");
+  public static final RegistryObject<Item> FRED_BRICKS = ITEMS.register("fred_bricks",
+      () -> new BlockItem(ModBlocks.FRED_BRICKS.get(), new Item.Properties()));
 
   public static final RegistryObject<Item> ABADA_HELMET = ITEMS.register("abada_helmet",
       () -> new ArmorItem(ModArmorMaterials.ABADA_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
