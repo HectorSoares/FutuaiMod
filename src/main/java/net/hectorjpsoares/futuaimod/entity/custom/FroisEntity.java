@@ -10,14 +10,15 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Vindicator;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 
 public class FroisEntity extends Vindicator {
   public FroisEntity(EntityType<? extends Vindicator> entityType, Level level) {
@@ -26,9 +27,9 @@ public class FroisEntity extends Vindicator {
     this.setDropChance(EquipmentSlot.MAINHAND, 0.0F);
   }
 
-  private boolean recebeuTorresminho = false;
-  private boolean recebeuCerveja = false;
-  private boolean pacificado = false;
+  private boolean hasReceivedCrackling = false;
+  private boolean hasReceivedBeer = false;
+  private boolean isPacified = false;
 
   public static AttributeSupplier.Builder createAttributes() {
     return Vindicator.createAttributes()
@@ -37,43 +38,43 @@ public class FroisEntity extends Vindicator {
 
   @Override
   public boolean isAggressive() {
-    return !pacificado;
+    return !isPacified;
   }
 
   @Override
-  public boolean canAttack(net.minecraft.world.entity.LivingEntity target) {
-    return !pacificado && super.canAttack(target);
+  public boolean canAttack(LivingEntity target) {
+    return !isPacified && super.canAttack(target);
   }
 
   @Override
-  public void setTarget(net.minecraft.world.entity.LivingEntity target) {
-    super.setTarget(pacificado ? null : target);
+  public void setTarget(LivingEntity target) {
+    super.setTarget(isPacified ? null : target);
   }
 
   @Override
   public InteractionResult mobInteract(Player player, InteractionHand hand) {
     ItemStack item = player.getItemInHand(hand);
-    boolean entregouTorresminho = !pacificado && item.is(ModItems.CRACKLING_PORK.get());
-    boolean entregouCerveja = !pacificado && item.is(ModItems.COLD_BEER.get());
+    boolean gaveCrackling = !isPacified && item.is(ModItems.CRACKLING_PORK.get());
+    boolean gaveBeer = !isPacified && item.is(ModItems.COLD_BEER.get());
 
-    if (!entregouTorresminho && !entregouCerveja) {
+    if (!gaveCrackling && !gaveBeer) {
       return super.mobInteract(player, hand);
     }
 
     if (!this.level().isClientSide) {
-      if (entregouTorresminho) {
-        recebeuTorresminho = true;
+      if (gaveCrackling) {
+        hasReceivedCrackling = true;
       }
-      if (entregouCerveja) {
-        recebeuCerveja = true;
+      if (gaveBeer) {
+        hasReceivedBeer = true;
       }
 
       item.shrink(1);
 
-      if (recebeuTorresminho && recebeuCerveja) {
-        pacificado = true;
+      if (hasReceivedCrackling && hasReceivedBeer) {
+        isPacified = true;
         this.setTarget(null);
-        this.spawnAtLocation(ModItems.FRED_SPECIAL_ITEM.get());
+        this.spawnAtLocation(ModItems.PIZZA_FROIS.get());
       }
     }
 
@@ -89,17 +90,23 @@ public class FroisEntity extends Vindicator {
   @Override
   public void addAdditionalSaveData(CompoundTag tag) {
     super.addAdditionalSaveData(tag);
-    tag.putBoolean("RecebeuTorresminho", recebeuTorresminho);
-    tag.putBoolean("RecebeuCerveja", recebeuCerveja);
-    tag.putBoolean("Pacificado", pacificado);
+    tag.putBoolean("HasReceivedCrackling", hasReceivedCrackling);
+    tag.putBoolean("HasReceivedBeer", hasReceivedBeer);
+    tag.putBoolean("IsPacified", isPacified);
   }
 
   @Override
   public void readAdditionalSaveData(CompoundTag tag) {
     super.readAdditionalSaveData(tag);
-    recebeuTorresminho = tag.getBoolean("RecebeuTorresminho");
-    recebeuCerveja = tag.getBoolean("RecebeuCerveja");
-    pacificado = tag.getBoolean("Pacificado");
+    hasReceivedCrackling = tag.contains("HasReceivedCrackling")
+        ? tag.getBoolean("HasReceivedCrackling")
+        : tag.getBoolean("RecebeuTorresminho");
+    hasReceivedBeer = tag.contains("HasReceivedBeer")
+        ? tag.getBoolean("HasReceivedBeer")
+        : tag.getBoolean("RecebeuCerveja");
+    isPacified = tag.contains("IsPacified")
+        ? tag.getBoolean("IsPacified")
+        : tag.getBoolean("Pacificado");
   }
 
   private static ItemStack createFroisAxe(RegistryAccess registryAccess) {
