@@ -20,13 +20,13 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "futuaimod:fred_special_item"
+          "name": "futuaimod:ticket_serie_b"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:random_chance",
-          "chance": 0.05
+          "chance": 0.9
         },
         {
           "condition": "minecraft:survives_explosion"

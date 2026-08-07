@@ -3,6 +3,7 @@ package net.hectorjpsoares.futuaimod.entity.custom;
 import java.util.HashSet;
 import java.util.Set;
 
+import net.hectorjpsoares.futuaimod.item.ModItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -14,6 +15,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
@@ -23,6 +25,7 @@ public class JoaoEntity extends Frog {
   private static final int TONGUE_DURATION = 12;
   private static final int ATTACK_COOLDOWN = 30;
   private static final String STOLEN_ITEMS_TAG = "JoaoStolenItems";
+  private static final int TOTAL_SPHERICAL_ITEMS = 5;
 
   private int tongueTimer = 0;
   private int attackCooldown = 0;
@@ -130,6 +133,7 @@ public class JoaoEntity extends Frog {
     if (isAvailableSphericalItem(item)) {
       player.getMainHandItem().shrink(1);
       stolenItems.add(item);
+      dropSpecialItemAfterStealingAllSpheres();
       return;
     }
 
@@ -138,6 +142,13 @@ public class JoaoEntity extends Frog {
     if (isAvailableSphericalItem(item)) {
       player.getOffhandItem().shrink(1);
       stolenItems.add(item);
+      dropSpecialItemAfterStealingAllSpheres();
+    }
+  }
+
+  private void dropSpecialItemAfterStealingAllSpheres() {
+    if (stolenItems.size() == TOTAL_SPHERICAL_ITEMS) {
+      this.spawnAtLocation(new ItemStack(ModItems.JOAO_SPECIAL_ITEM.get()));
     }
   }
 

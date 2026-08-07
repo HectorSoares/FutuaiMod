@@ -15,7 +15,7 @@ public class ModBlocks {
   public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, FutUaiMod.MOD_ID);
 
   public static final RegistryObject<Block> FRED_BRICKS = BLOCKS.register("fred_bricks",
-      () -> new Block(BlockBehaviour.Properties.of()
+      () -> new FredBricksBlock(BlockBehaviour.Properties.of()
           .mapColor(MapColor.COLOR_RED)
           .instrument(NoteBlockInstrument.BASEDRUM)
           .strength(1.0F, 6.0F)

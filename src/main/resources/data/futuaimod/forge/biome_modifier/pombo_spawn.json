@@ -8,7 +8,7 @@
   ],
   "spawners": {
     "type": "futuaimod:pombo_mob",
-    "weight": 5,
+    "weight": 10,
     "minCount": 1,
     "maxCount": 1
   }

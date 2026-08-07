@@ -4,7 +4,7 @@
   "spawners": [
     {
       "type": "futuaimod:yuri_mob",
-      "weight": 5,
+      "weight": 25,
       "minCount": 1,
       "maxCount": 1
     }

@@ -1,13 +1,17 @@
 package net.hectorjpsoares.futuaimod.entity.custom;
 
+import net.hectorjpsoares.futuaimod.item.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 
@@ -37,6 +41,15 @@ public class PiteraEntity extends Phantom {
     }
 
     return hit;
+  }
+
+  @Override
+  protected void dropCustomDeathLoot(
+      ServerLevel level,
+      DamageSource damageSource,
+      boolean recentlyHit) {
+    super.dropCustomDeathLoot(level, damageSource, recentlyHit);
+    this.spawnAtLocation(new ItemStack(ModItems.PITERA_SPECIAL_ITEM.get()));
   }
 
   public static boolean checkPiteraSpawn(

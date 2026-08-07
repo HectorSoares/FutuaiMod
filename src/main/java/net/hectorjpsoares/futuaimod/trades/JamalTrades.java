@@ -1,5 +1,6 @@
 package net.hectorjpsoares.futuaimod.trades;
 
+import net.hectorjpsoares.futuaimod.item.ModItems;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -79,6 +80,16 @@ public class JamalTrades {
               new ItemCost(Items.EMERALD, 5),
               5,
               20,
+              0.05F));
+    }
+
+    if (level >= 5) {
+      offers.add(
+          new MerchantOffer(
+              new ItemCost(Items.EMERALD, 12),
+              new ItemStack(ModItems.JAMAL_SPECIAL_ITEM.get()),
+              3,
+              30,
               0.05F));
     }
   }

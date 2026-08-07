@@ -1,6 +1,7 @@
 package net.hectorjpsoares.futuaimod.entity.custom;
 
 import net.hectorjpsoares.futuaimod.item.ModItems;
+import net.hectorjpsoares.futuaimod.item.TicketSerieBFactory;
 import net.hectorjpsoares.futuaimod.block.ModBlocks;
 import net.hectorjpsoares.futuaimod.sound.ModSounds;
 import net.minecraft.core.BlockPos;
@@ -189,7 +190,7 @@ public class FredEntity extends EnderMan {
         recentlyHit);
 
     this.spawnAtLocation(
-        new ItemStack(ModItems.FRED_SPECIAL_ITEM.get()));
+        TicketSerieBFactory.createTicket());
   }
 
   @Override
