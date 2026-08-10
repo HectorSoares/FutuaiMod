@@ -4,7 +4,7 @@
   "spawners": [
     {
       "type": "futuaimod:marques_mob",
-      "weight": 60,
+      "weight": 10,
       "minCount": 1,
       "maxCount": 1
     }

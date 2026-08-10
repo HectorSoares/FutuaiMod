@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 
 public class FredBricksBlock extends Block {
+
   public FredBricksBlock(BlockBehaviour.Properties properties) {
     super(properties);
   }
@@ -17,7 +18,11 @@ public class FredBricksBlock extends Block {
   @Override
   protected List<ItemStack> getDrops(BlockState state, LootParams.Builder lootParams) {
     List<ItemStack> drops = super.getDrops(state, lootParams);
-    drops.forEach(TicketSerieBFactory::nameTicket);
+
+    if (lootParams.getLevel().random.nextFloat() < 0.05F) {
+      drops.add(TicketSerieBFactory.createTicket());
+    }
+
     return drops;
   }
 }

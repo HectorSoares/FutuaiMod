@@ -1,6 +1,5 @@
 package net.hectorjpsoares.futuaimod.entity.custom;
 
-import net.hectorjpsoares.futuaimod.item.ModItems;
 import net.hectorjpsoares.futuaimod.item.TicketSerieBFactory;
 import net.hectorjpsoares.futuaimod.block.ModBlocks;
 import net.hectorjpsoares.futuaimod.sound.ModSounds;
@@ -11,13 +10,13 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.monster.EnderMan;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 public class FredEntity extends EnderMan {
 
-  private static final int MIN_PLACE_TIME = 20 * 2;
-  private static final int MAX_PLACE_TIME = 20 * 5;
+  private static final int MIN_PLACE_TIME = 20 * 60;
+  private static final int MAX_PLACE_TIME = 20 * 120;
+  private static final float TICKET_DROP_CHANCE = 0.10F;
 
   private int placeCooldown;
   private BlockPos lastPlacedBlock;
@@ -41,7 +40,8 @@ public class FredEntity extends EnderMan {
     }
 
     if (this.getCarriedBlock() == null) {
-      this.setCarriedBlock(ModBlocks.FRED_BRICKS.get().defaultBlockState());
+      this.setCarriedBlock(
+          ModBlocks.FRED_BRICKS.get().defaultBlockState());
     }
   }
 
@@ -90,7 +90,6 @@ public class FredEntity extends EnderMan {
     BlockPos base = lastPlacedBlock;
 
     for (int i = 0; i < 10; i++) {
-
       BlockPos target;
 
       if (base == null) {
@@ -115,7 +114,6 @@ public class FredEntity extends EnderMan {
       BlockPos placePos = findGroundPosition(target);
 
       if (placePos != null) {
-
         pendingPlacePos = placePos;
 
         this.getNavigation().moveTo(
@@ -124,21 +122,15 @@ public class FredEntity extends EnderMan {
             placePos.getZ() + 0.5,
             1.0);
 
-        System.out.println("Fred indo para: " + placePos);
-
         return;
       }
     }
-
-    System.out.println("Fred não encontrou posição válida");
   }
 
   private BlockPos findGroundPosition(BlockPos target) {
-
     BlockPos placePos = target.above();
 
     for (int y = 0; y < 3; y++) {
-
       if (!this.level().getBlockState(placePos).isAir()) {
         return null;
       }
@@ -154,7 +146,6 @@ public class FredEntity extends EnderMan {
   }
 
   private void placeBlockAt(BlockPos pos) {
-
     System.out.println("Tentando colocar bloco em: " + pos);
 
     if (!this.level().getBlockState(pos).isAir()) {
@@ -189,8 +180,10 @@ public class FredEntity extends EnderMan {
         damageSource,
         recentlyHit);
 
-    this.spawnAtLocation(
-        TicketSerieBFactory.createTicket());
+    if (this.random.nextFloat() < TICKET_DROP_CHANCE) {
+      this.spawnAtLocation(
+          TicketSerieBFactory.createTicket());
+    }
   }
 
   @Override
