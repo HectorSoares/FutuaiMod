@@ -3,9 +3,11 @@ package net.hectorjpsoares.futuaimod.entity.custom;
 import net.hectorjpsoares.futuaimod.item.ModItems;
 import net.hectorjpsoares.futuaimod.sound.ModSounds;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.Mob;
@@ -17,7 +19,6 @@ import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.monster.Evoker;
 import net.minecraft.world.entity.monster.SpellcasterIllager;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -28,6 +29,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 
 import java.util.EnumSet;
+import java.util.List;
 
 public class HectorEntity extends Evoker {
   private static final int MUSIC_RADIUS = 6;
@@ -36,14 +38,21 @@ public class HectorEntity extends Evoker {
   private static final int LIGHTNING_DELAY = 20 * 3;
   private static final int SPAWN_DISTANCE = 256;
 
+  private static final String TAG_DIMENSION_INITIALIZED = "HectorDimensionInitialized";
+  private static final String TAG_WAS_IN_OVERWORLD = "HectorWasInOverworld";
+  private static final String TAG_LIGHTNING_TIMER = "HectorLightningTimer";
+  private static final String TAG_CREATION_COOLDOWN = "HectorCreationCooldown";
+
   private int creationCooldown = 0;
+  private int lightningTimer = -1;
 
   /*
-   * -1 = ainda não iniciou o timer
-   * >= 0 = timer contando
-   * -2 = raio já foi criado nessa entrada no Overworld
+   * Indica se já verificamos a dimensão da entidade.
+   *
+   * Isso é salvo no NBT para que carregar o mundo/chunk
+   * não seja interpretado como uma entrada no Overworld.
    */
-  private int lightningTimer = -1;
+  private boolean dimensionInitialized = false;
   private boolean wasInOverworld = false;
 
   public HectorEntity(
@@ -94,10 +103,17 @@ public class HectorEntity extends Evoker {
         spawnType,
         spawnGroupData);
 
-    this.playSound(
-        ModSounds.HECTOR_SPAWN_SOUND.get(),
-        1.0F,
-        1.0F);
+    boolean inOverworld = level.getLevel()
+        .dimension()
+        .equals(Level.OVERWORLD);
+
+    this.dimensionInitialized = true;
+    this.wasInOverworld = inOverworld;
+    this.lightningTimer = -1;
+
+    if (inOverworld) {
+      playHectorArrivalSound();
+    }
 
     return data;
   }
@@ -136,6 +152,13 @@ public class HectorEntity extends Evoker {
         new HectorCreationGoal(this));
   }
 
+  private void playHectorArrivalSound() {
+    this.playSound(
+        ModSounds.HECTOR_SPAWN_SOUND.get(),
+        1.0F,
+        1.0F);
+  }
+
   @Override
   public void tick() {
     super.tick();
@@ -143,46 +166,57 @@ public class HectorEntity extends Evoker {
     if (this.level().isClientSide())
       return;
 
+    // Hector nunca permanece pegando fogo
+    if (this.isOnFire())
+      this.clearFire();
+
+    boolean inOverworld = this.level()
+        .dimension()
+        .equals(Level.OVERWORLD);
+
     /*
-     * Detecta entrada no Overworld.
+     * Primeira inicialização da entidade.
      *
-     * Isso funciona tanto para:
-     * - Hector spawnando diretamente no Overworld
-     * - Hector entrando no Overworld por portal
+     * Se o Hector foi carregado de um save, os valores
+     * já terão sido recuperados pelo NBT.
+     *
+     * Se for uma entidade antiga sem esses dados,
+     * simplesmente assume a dimensão atual.
      */
-    boolean inOverworld = this.level().dimension().equals(Level.OVERWORLD);
+    if (!dimensionInitialized) {
+      dimensionInitialized = true;
+      wasInOverworld = inOverworld;
+    } else {
+      /*
+       * Entrou no Overworld vindo de outra dimensão.
+       */
+      if (inOverworld && !wasInOverworld) {
+        lightningTimer = LIGHTNING_DELAY;
+      }
 
-    if (inOverworld && !wasInOverworld) {
-      lightningTimer = LIGHTNING_DELAY;
+      /*
+       * Saiu do Overworld.
+       *
+       * Não cria raio ao sair.
+       * Apenas prepara para uma possível entrada futura.
+       */
+      if (!inOverworld && wasInOverworld) {
+        lightningTimer = -1;
+      }
+
+      wasInOverworld = inOverworld;
     }
 
-    /*
-     * Se saiu do Overworld, prepara o Hector para
-     * iniciar novamente o processo quando voltar.
-     */
-    if (!inOverworld && wasInOverworld) {
-      lightningTimer = -1;
-    }
-
-    wasInOverworld = inOverworld;
-
-    /*
-     * Contador do raio.
-     */
     if (lightningTimer > 0) {
       lightningTimer--;
 
       if (lightningTimer == 0) {
+        playHectorArrivalSound();
         summonLightning();
-
-        // Impede que o raio seja criado novamente
-        lightningTimer = -2;
+        lightningTimer = -1;
       }
     }
 
-    /*
-     * Cooldown da criação.
-     */
     if (creationCooldown > 0) {
       creationCooldown--;
     }
@@ -273,6 +307,7 @@ public class HectorEntity extends Evoker {
     @Override
     public void start() {
       this.spellTicks = CASTING_TIME;
+
       hector.setIsCastingSpell(
           SpellcasterIllager.IllagerSpell.WOLOLO);
     }
@@ -305,13 +340,13 @@ public class HectorEntity extends Evoker {
 
     createFlowers(serverLevel);
 
-    // 35% de chance de criar um animal
-    if (this.random.nextFloat() < 0.35F) {
+    // 40% de chance de criar um animal
+    if (this.random.nextFloat() < 0.40F) {
       spawnCuteAnimal(serverLevel);
+    }
 
-      if (this.random.nextFloat() < 0.20F) {
-        spawnCuteAnimal(serverLevel);
-      }
+    if (this.random.nextFloat() < 0.15F) {
+      spawnCuteAnimal(serverLevel);
     }
   }
 
@@ -348,7 +383,6 @@ public class HectorEntity extends Evoker {
 
   private void spawnCuteAnimal(ServerLevel level) {
     EntityType<? extends Mob> type = getRandomCuteAnimal();
-
     Mob animal = type.create(level);
 
     if (animal == null)
@@ -366,20 +400,51 @@ public class HectorEntity extends Evoker {
         this.random.nextFloat() * 360.0F,
         0.0F);
 
+    if (animal instanceof AgeableMob ageableMob) {
+      ageableMob.setBaby(true);
+    }
+
     level.addFreshEntity(animal);
   }
 
+  private record CuteAnimalEntry(
+      EntityType<? extends Mob> type,
+      int weight) {
+  }
+
+  private static final List<CuteAnimalEntry> CUTE_ANIMALS = List.of(
+      new CuteAnimalEntry(EntityType.PANDA, 10),
+      new CuteAnimalEntry(EntityType.RABBIT, 10),
+      new CuteAnimalEntry(EntityType.CAT, 10),
+      new CuteAnimalEntry(EntityType.CHICKEN, 8),
+      new CuteAnimalEntry(EntityType.SHEEP, 8),
+      new CuteAnimalEntry(EntityType.FROG, 8),
+      new CuteAnimalEntry(EntityType.TURTLE, 8),
+      new CuteAnimalEntry(EntityType.BEE, 8),
+      new CuteAnimalEntry(EntityType.DOLPHIN, 6),
+      new CuteAnimalEntry(EntityType.CAMEL, 4),
+      new CuteAnimalEntry(EntityType.AXOLOTL, 2),
+      new CuteAnimalEntry(EntityType.FOX, 6),
+      new CuteAnimalEntry(EntityType.PARROT, 6),
+      new CuteAnimalEntry(EntityType.ARMADILLO, 5),
+      new CuteAnimalEntry(EntityType.GOAT, 4),
+      new CuteAnimalEntry(EntityType.MOOSHROOM, 2));
+
   private EntityType<? extends Mob> getRandomCuteAnimal() {
-    return switch (this.random.nextInt(8)) {
-      case 0 -> EntityType.PANDA;
-      case 1 -> EntityType.RABBIT;
-      case 2 -> EntityType.CAT;
-      case 3 -> EntityType.CHICKEN;
-      case 4 -> EntityType.SHEEP;
-      case 5 -> EntityType.FROG;
-      case 6 -> EntityType.TURTLE;
-      default -> EntityType.BEE;
-    };
+    int totalWeight = CUTE_ANIMALS.stream()
+        .mapToInt(CuteAnimalEntry::weight)
+        .sum();
+
+    int randomValue = this.random.nextInt(totalWeight);
+
+    for (CuteAnimalEntry entry : CUTE_ANIMALS) {
+      randomValue -= entry.weight();
+
+      if (randomValue < 0)
+        return entry.type();
+    }
+
+    return EntityType.PANDA;
   }
 
   private BlockPos findSpawnPosition(
@@ -430,6 +495,52 @@ public class HectorEntity extends Evoker {
     }
 
     return null;
+  }
+
+  @Override
+  public void addAdditionalSaveData(CompoundTag tag) {
+    super.addAdditionalSaveData(tag);
+
+    tag.putBoolean(
+        TAG_DIMENSION_INITIALIZED,
+        dimensionInitialized);
+
+    tag.putBoolean(
+        TAG_WAS_IN_OVERWORLD,
+        wasInOverworld);
+
+    tag.putInt(
+        TAG_LIGHTNING_TIMER,
+        lightningTimer);
+
+    tag.putInt(
+        TAG_CREATION_COOLDOWN,
+        creationCooldown);
+  }
+
+  @Override
+  public void readAdditionalSaveData(CompoundTag tag) {
+    super.readAdditionalSaveData(tag);
+
+    if (tag.contains(TAG_DIMENSION_INITIALIZED)) {
+      dimensionInitialized = tag.getBoolean(
+          TAG_DIMENSION_INITIALIZED);
+    }
+
+    if (tag.contains(TAG_WAS_IN_OVERWORLD)) {
+      wasInOverworld = tag.getBoolean(
+          TAG_WAS_IN_OVERWORLD);
+    }
+
+    if (tag.contains(TAG_LIGHTNING_TIMER)) {
+      lightningTimer = tag.getInt(
+          TAG_LIGHTNING_TIMER);
+    }
+
+    if (tag.contains(TAG_CREATION_COOLDOWN)) {
+      creationCooldown = tag.getInt(
+          TAG_CREATION_COOLDOWN);
+    }
   }
 
   @Override
