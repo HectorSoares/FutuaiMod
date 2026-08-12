@@ -91,6 +91,12 @@ public class MarquesTrades {
         50,
         0.05f,
         random));
+    offers.add(new MerchantOffer(
+        new ItemCost(ModItems.PREXECA_MILTON.get(), 32),
+        new ItemStack(ModItems.MARQUES_SPECIAL_ITEM.get(), 1),
+        1,
+        50,
+        0.05f));
   }
 
   private static MerchantOffer randomItemTrade(

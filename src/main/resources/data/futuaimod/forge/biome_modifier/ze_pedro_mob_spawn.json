@@ -1,0 +1,18 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:ocean",
+    "minecraft:deep_ocean",
+    "minecraft:river",
+    "minecraft:deep_lukewarm_ocean",
+    "minecraft:lukewarm_ocean"
+  ],
+  "spawners": [
+    {
+      "type": "futuaimod:ze_pedro_mob",
+      "weight": 3,
+      "minCount": 1,
+      "maxCount": 2
+    }
+  ]
+}

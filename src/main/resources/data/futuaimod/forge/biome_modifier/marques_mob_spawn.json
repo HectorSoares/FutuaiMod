@@ -1,10 +1,10 @@
 {
   "type": "forge:add_spawns",
-  "biomes": "#forge:is_water",
+  "biomes": "#minecraft:is_overworld",
   "spawners": [
     {
-      "type": "futuaimod:ze_pedro_mob",
-      "weight": 10,
+      "type": "futuaimod:marques_mob",
+      "weight": 3,
       "minCount": 1,
       "maxCount": 1
     }

@@ -2,14 +2,16 @@
   "type": "forge:add_spawns",
   "biomes": [
     "minecraft:plains",
-    "minecraft:forest",
+    "minecraft:desert",
+    "minecraft:savanna",
     "minecraft:taiga",
-    "minecraft:savanna"
+    "minecraft:snowy_plains",
+    "minecraft:meadow"
   ],
   "spawners": [
     {
-      "type": "futuaimod:fred_mob",
-      "weight": 1,
+      "type": "futuaimod:jamal_mob",
+      "weight": 3,
       "minCount": 1,
       "maxCount": 1
     }

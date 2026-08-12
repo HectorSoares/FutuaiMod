@@ -25,16 +25,19 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.JukeboxBlock;
 import net.minecraft.world.level.block.entity.JukeboxBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 
 import java.util.EnumSet;
 
 public class HectorEntity extends Evoker {
-
   private static final int MUSIC_RADIUS = 6;
   private static final int CREATION_COOLDOWN = 20 * 15;
   private static final int CASTING_TIME = 80;
   private static final int LIGHTNING_DELAY = 20 * 3;
+  private static final int SPAWN_DISTANCE = 256;
+
   private int creationCooldown = 0;
+
   /*
    * -1 = ainda não iniciou o timer
    * >= 0 = timer contando
@@ -53,6 +56,29 @@ public class HectorEntity extends Evoker {
     return Evoker.createAttributes()
         .add(Attributes.MAX_HEALTH, 6.0D)
         .add(Attributes.MOVEMENT_SPEED, 0.25D);
+  }
+
+  public static boolean checkHectorSpawnRules(
+      EntityType<HectorEntity> entityType,
+      ServerLevelAccessor level,
+      MobSpawnType spawnType,
+      BlockPos pos,
+      RandomSource random) {
+
+    if (!Mob.checkMobSpawnRules(
+        entityType,
+        level,
+        spawnType,
+        pos,
+        random)) {
+      return false;
+    }
+
+    AABB area = new AABB(pos).inflate(SPAWN_DISTANCE);
+
+    return level.getEntitiesOfClass(
+        HectorEntity.class,
+        area).isEmpty();
   }
 
   @Override
@@ -163,7 +189,6 @@ public class HectorEntity extends Evoker {
   }
 
   private void summonLightning() {
-
     if (!(this.level() instanceof ServerLevel serverLevel))
       return;
 
@@ -181,7 +206,6 @@ public class HectorEntity extends Evoker {
   }
 
   private boolean isNearBlackJukebox() {
-
     // O comportamento criador só funciona no Overworld
     if (!this.level().dimension().equals(Level.OVERWORLD))
       return false;
@@ -211,6 +235,7 @@ public class HectorEntity extends Evoker {
           return true;
       }
     }
+
     return false;
   }
 
@@ -248,7 +273,8 @@ public class HectorEntity extends Evoker {
     @Override
     public void start() {
       this.spellTicks = CASTING_TIME;
-      hector.setIsCastingSpell(SpellcasterIllager.IllagerSpell.WOLOLO);
+      hector.setIsCastingSpell(
+          SpellcasterIllager.IllagerSpell.WOLOLO);
     }
 
     @Override
@@ -256,7 +282,9 @@ public class HectorEntity extends Evoker {
       spellTicks--;
 
       if (spellTicks <= 0) {
-        hector.setIsCastingSpell(SpellcasterIllager.IllagerSpell.NONE);
+        hector.setIsCastingSpell(
+            SpellcasterIllager.IllagerSpell.NONE);
+
         hector.createLife();
         hector.creationCooldown = CREATION_COOLDOWN;
       }
@@ -265,12 +293,13 @@ public class HectorEntity extends Evoker {
     @Override
     public void stop() {
       spellTicks = 0;
-      hector.setIsCastingSpell(SpellcasterIllager.IllagerSpell.NONE);
+
+      hector.setIsCastingSpell(
+          SpellcasterIllager.IllagerSpell.NONE);
     }
   }
 
   private void createLife() {
-
     if (!(this.level() instanceof ServerLevel serverLevel))
       return;
 
@@ -279,6 +308,7 @@ public class HectorEntity extends Evoker {
     // 35% de chance de criar um animal
     if (this.random.nextFloat() < 0.35F) {
       spawnCuteAnimal(serverLevel);
+
       if (this.random.nextFloat() < 0.20F) {
         spawnCuteAnimal(serverLevel);
       }
@@ -286,7 +316,6 @@ public class HectorEntity extends Evoker {
   }
 
   private void createFlowers(ServerLevel level) {
-
     RandomSource random = this.random;
     int amount = 3 + random.nextInt(4);
 
@@ -298,7 +327,9 @@ public class HectorEntity extends Evoker {
 
       BlockState flower = getRandomFlower(random);
 
-      if (level.getBlockState(pos).isAir() && flower.canSurvive(level, pos)) {
+      if (level.getBlockState(pos).isAir()
+          && flower.canSurvive(level, pos)) {
+
         level.setBlock(pos, flower, 3);
       }
     }
@@ -316,7 +347,6 @@ public class HectorEntity extends Evoker {
   }
 
   private void spawnCuteAnimal(ServerLevel level) {
-
     EntityType<? extends Mob> type = getRandomCuteAnimal();
 
     Mob animal = type.create(level);
@@ -359,7 +389,6 @@ public class HectorEntity extends Evoker {
     RandomSource random = this.random;
 
     for (int attempt = 0; attempt < 10; attempt++) {
-
       int x = this.getBlockX()
           + random.nextInt(radius * 2 + 1)
           - radius;
@@ -375,7 +404,6 @@ public class HectorEntity extends Evoker {
        * da altura atual do Hector.
        */
       while (y > level.getMinBuildHeight()) {
-
         BlockPos groundPos = new BlockPos(x, y, z);
 
         BlockState groundState = level.getBlockState(groundPos);
@@ -389,9 +417,7 @@ public class HectorEntity extends Evoker {
 
           if (spawnPos.distSqr(
               this.blockPosition()) <= MUSIC_RADIUS * MUSIC_RADIUS
-
-              && level.getBlockState(
-                  spawnPos).isAir()) {
+              && level.getBlockState(spawnPos).isAir()) {
 
             return spawnPos;
           }

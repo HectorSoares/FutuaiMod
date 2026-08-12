@@ -26,7 +26,7 @@ public class ModEntities {
 
   public static final RegistryObject<EntityType<PomboEntity>> POMBO_MOB = ENTITIES.register("pombo_mob",
       () -> EntityType.Builder.of(PomboEntity::new, MobCategory.CREATURE)
-          .sized(2.0F, 3.0F)
+          .sized(1.0F, 1.5F)
           .build("pombo_mob"));
 
   public static final RegistryObject<EntityType<PiteraEntity>> PITERA_MOB = ENTITIES.register("pitera_mob",
@@ -50,7 +50,7 @@ public class ModEntities {
           .build("frois_mob"));
 
   public static final RegistryObject<EntityType<HectorEntity>> HECTOR_MOB = ENTITIES.register("hector_mob",
-      () -> EntityType.Builder.of(HectorEntity::new, MobCategory.CREATURE)
+      () -> EntityType.Builder.of(HectorEntity::new, MobCategory.MONSTER)
           .sized(0.6f, 1.95f)
           .build("hector_mob"));
 
@@ -60,7 +60,7 @@ public class ModEntities {
           .build("marques_mob"));
 
   public static final RegistryObject<EntityType<ZePedroEntity>> ZE_PEDRO_MOB = ENTITIES.register("ze_pedro_mob",
-      () -> EntityType.Builder.of(ZePedroEntity::new, MobCategory.CREATURE)
+      () -> EntityType.Builder.of(ZePedroEntity::new, MobCategory.WATER_CREATURE)
           .sized(0.6f, 1.95f)
           .build("ze_pedro_mob"));
 
@@ -71,7 +71,7 @@ public class ModEntities {
 
   public static final RegistryObject<EntityType<JamalEntity>> JAMAL_MOB = ENTITIES.register("jamal_mob",
       () -> EntityType.Builder.of(JamalEntity::new,
-          MobCategory.MISC)
+          MobCategory.CREATURE)
           .sized(0.6f, 1.95f)
           .build("jamal_mob"));
 

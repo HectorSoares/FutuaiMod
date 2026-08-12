@@ -6,10 +6,12 @@
     "minecraft:savanna",
     "minecraft:taiga"
   ],
-  "spawners": {
-    "type": "futuaimod:pombo_mob",
-    "weight": 5,
-    "minCount": 1,
-    "maxCount": 1
-  }
+  "spawners": [
+    {
+      "type": "futuaimod:pombo_mob",
+      "weight": 3,
+      "minCount": 1,
+      "maxCount": 1
+    }
+  ]
 }

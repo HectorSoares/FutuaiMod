@@ -1,0 +1,102 @@
+{
+  "spawn_weight_multiplier": 1.0,
+  "mobs": {
+    "futuai_fox": {
+      "biomes": ["#minecraft:is_forest"],
+      "weight": 5,
+      "min_count": 1,
+      "max_count": 3
+    },
+    "frois_mob": {
+      "biomes": ["#minecraft:is_forest"],
+      "weight": 5,
+      "min_count": 1,
+      "max_count": 1
+    },
+    "fred_mob": {
+      "biomes": ["minecraft:desert", "minecraft:savanna"],
+      "weight": 3,
+      "min_count": 1,
+      "max_count": 1
+    },
+    "hector_mob": {
+      "biomes": ["minecraft:soul_sand_valley"],
+      "weight": 1,
+      "min_count": 1,
+      "max_count": 1
+    },
+    "jamal_mob": {
+      "biomes": [
+        "minecraft:plains",
+        "minecraft:desert",
+        "minecraft:savanna",
+        "minecraft:taiga",
+        "minecraft:snowy_plains",
+        "minecraft:meadow"
+      ],
+      "weight": 3,
+      "min_count": 1,
+      "max_count": 1
+    },
+    "joao_mob": {
+      "biomes": [
+        "minecraft:swamp",
+        "minecraft:mangrove_swamp",
+        "minecraft:jungle",
+        "minecraft:sparse_jungle",
+        "minecraft:bamboo_jungle"
+      ],
+      "weight": 10,
+      "min_count": 1,
+      "max_count": 3
+    },
+    "marques_mob": {
+      "biomes": ["#minecraft:is_overworld"],
+      "weight": 3,
+      "min_count": 1,
+      "max_count": 1
+    },
+    "pitera_mob": {
+      "biomes": [
+        "minecraft:plains",
+        "minecraft:savanna",
+        "minecraft:desert",
+        "minecraft:badlands",
+        "minecraft:snowy_plains",
+        "minecraft:meadow"
+      ],
+      "weight": 3,
+      "min_count": 1,
+      "max_count": 1
+    },
+    "pombo_mob": {
+      "biomes": [
+        "minecraft:plains",
+        "minecraft:meadow",
+        "minecraft:savanna",
+        "minecraft:taiga"
+      ],
+      "weight": 3,
+      "min_count": 1,
+      "max_count": 1
+    },
+    "yuri_mob": {
+      "biomes": ["#minecraft:is_forest"],
+      "weight": 6,
+      "min_count": 1,
+      "max_count": 1
+    },
+    "ze_pedro_mob": {
+      "biomes": [
+        "minecraft:ocean",
+        "minecraft:deep_ocean",
+        "minecraft:river",
+        "minecraft:deep_lukewarm_ocean",
+        "minecraft:lukewarm_ocean"
+      ],
+      "weight": 3,
+      "min_count": 1,
+      "max_count": 2
+    }
+  }
+}

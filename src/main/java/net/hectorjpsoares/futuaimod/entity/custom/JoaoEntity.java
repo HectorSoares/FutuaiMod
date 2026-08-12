@@ -43,10 +43,10 @@ public class JoaoEntity extends Frog {
         .add(Attributes.ATTACK_DAMAGE, 2.0D);
   }
 
-  @Override
-  protected void registerGoals() {
-    super.registerGoals();
-  }
+  // @Override
+  // protected void registerGoals() {
+  // super.registerGoals();
+  // }
 
   @Override
   public void tick() {
