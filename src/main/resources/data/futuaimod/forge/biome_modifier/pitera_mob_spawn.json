@@ -4,14 +4,12 @@
     "minecraft:plains",
     "minecraft:savanna",
     "minecraft:desert",
-    "minecraft:badlands",
-    "minecraft:snowy_plains",
-    "minecraft:meadow"
+    "minecraft:badlands"
   ],
   "spawners": [
     {
       "type": "futuaimod:pitera_mob",
-      "weight": 3,
+      "weight": 1,
       "minCount": 1,
       "maxCount": 1
     }

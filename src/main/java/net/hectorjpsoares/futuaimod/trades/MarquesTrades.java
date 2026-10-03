@@ -65,7 +65,8 @@ public class MarquesTrades {
 
     offers.add(randomItemTrade(
         RARE_ITEMS,
-        new ItemCost(ModItems.PREXECA_MILTON.get(), 16),
+        new ItemCost(ModItems.PREXECA_MILTON.get(), randomPrice(16,
+            random)),
         999999,
         50,
         0.2f,
@@ -91,12 +92,42 @@ public class MarquesTrades {
         50,
         0.05f,
         random));
+    offers.add(randomItemTrade(
+        RANDOM_ITEMS,
+        new ItemCost(RANDOM_ITEMS.get(random.nextInt(RANDOM_ITEMS
+            .size())), 4),
+        5,
+        20,
+        0.1f,
+        random));
+
     offers.add(new MerchantOffer(
-        new ItemCost(ModItems.PREXECA_MILTON.get(), 32),
-        new ItemStack(ModItems.MARQUES_SPECIAL_ITEM.get(), 1),
-        1,
-        50,
-        0.05f));
+        new ItemCost(RANDOM_ITEMS.get(random.nextInt(RANDOM_ITEMS
+            .size())), 1),
+        new ItemStack(ModItems.PORTO_FARIA.get(), 1),
+        999999,
+        10,
+        0.1F));
+
+    if (random.nextFloat() < 0.10F) {
+      Item randomItem = RANDOM_ITEMS.get(random.nextInt(RANDOM_ITEMS.size()));
+
+      offers.add(new MerchantOffer(
+          new ItemCost(randomItem, 1),
+          new ItemStack(ModItems.PORTO_FARIA.get(), 1),
+          999999,
+          10,
+          0.1F));
+    }
+  }
+
+  private static int randomPrice(int currentPrice, RandomSource random) {
+    if (currentPrice <= 8) {
+      return currentPrice;
+    }
+
+    int minPrice = currentPrice / 2;
+    return minPrice + random.nextInt(currentPrice - minPrice + 1);
   }
 
   private static MerchantOffer randomItemTrade(

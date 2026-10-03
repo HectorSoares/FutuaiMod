@@ -19,6 +19,7 @@ import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.monster.Evoker;
 import net.minecraft.world.entity.monster.SpellcasterIllager;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -88,6 +89,13 @@ public class HectorEntity extends Evoker {
     return level.getEntitiesOfClass(
         HectorEntity.class,
         area).isEmpty();
+  }
+
+  @Override
+  protected void dropCustomDeathLoot(ServerLevel level, DamageSource damageSource, boolean recentlyHit) {
+    super.dropCustomDeathLoot(level, damageSource, recentlyHit);
+
+    this.spawnAtLocation(new ItemStack(ModItems.ABADA_CHESTPLATE.get()));
   }
 
   @Override

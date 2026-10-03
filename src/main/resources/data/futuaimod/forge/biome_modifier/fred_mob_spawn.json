@@ -1,13 +1,10 @@
 {
   "type": "forge:add_spawns",
-  "biomes": [
-    "minecraft:desert",
-    "minecraft:savanna"
-  ],
+  "biomes": ["minecraft:desert", "minecraft:savanna"],
   "spawners": [
     {
       "type": "futuaimod:fred_mob",
-      "weight": 3,
+      "weight": 1,
       "minCount": 1,
       "maxCount": 1
     }
